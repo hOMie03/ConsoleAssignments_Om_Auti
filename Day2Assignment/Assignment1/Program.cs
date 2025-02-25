@@ -5,11 +5,19 @@
         static void Main(string[] args)
         {
             #region Q1
+        
+        takeSal:
             Console.WriteLine("Please enter the basic salary: ");
-            double basicSalary = Convert.ToDouble(Console.ReadLine());
+            double basicSalary;
+            bool isSalary = Double.TryParse(Console.ReadLine(), out basicSalary);
+            if(isSalary == false)
+            {
+                Console.WriteLine("Please enter correct salary!");
+                goto takeSal;
+            }
             double salaryAfterTaxDeduction = basicSalary * 0.10;
             double bonus;
-            int ratings = 5;
+            int ratings = 5; // Play with this! (Also can use Random for random ratings)
             if(ratings >= 8)
             {
                 bonus = basicSalary * 0.20;

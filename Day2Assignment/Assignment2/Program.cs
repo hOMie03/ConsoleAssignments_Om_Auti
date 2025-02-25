@@ -11,10 +11,16 @@
             double totalTicketAmt;
             do
             {
+                takeChoice:
                 Console.WriteLine("--- Online Train Booking System ---");
                 Console.WriteLine("Select the type of train ticket you want to book:");
                 Console.WriteLine("1. General (Rs. 200)\n2. AC (Rs. 1000)\n3. Sleeper (Rs. 500)\n4. Exit");
-                choice = Convert.ToInt32(Console.ReadLine());
+                bool isChoice = int.TryParse(Console.ReadLine(), out choice);
+                if(isChoice == false)
+                {
+                    Console.WriteLine("Please enter correct choice number.");
+                    goto takeChoice;
+                }
                 switch (choice)
                 {
                     case 1:

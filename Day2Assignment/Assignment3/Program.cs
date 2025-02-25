@@ -12,7 +12,13 @@
             };
             takeID:
             Console.WriteLine("Please enter your user ID: ");
-            int userID = Convert.ToInt32(Console.ReadLine());
+            int userID;
+            bool isID = int.TryParse(Console.ReadLine(), out userID);
+            if (isID == false)
+            {
+                Console.WriteLine("Please enter correct ID.");
+                goto takeID;
+            }
             for (int i = 0; i < userData.GetLength(0); i++)
             {
                 if (userData[i, 0] == userID)
@@ -28,7 +34,7 @@
             }
             if (flag == 1)
             {
-                Console.WriteLine($"Your available wallet balance is {bal}");
+                Console.WriteLine($"Your available wallet balance is Rs. {bal}.");
             }
             else
             {
