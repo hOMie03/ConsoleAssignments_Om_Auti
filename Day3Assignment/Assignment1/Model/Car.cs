@@ -42,7 +42,15 @@ namespace Assignment1.Model
             get { return price; }
             set { price = value; }
         }
-        public Car() {}
+        public Car()
+        {
+            CarID = 1;
+            Brand = "TestBrand";
+            Model = "TestModel";
+            Year = 2024;
+            Price = 0;
+
+        }
         public Car(int cid, string br, string mod, int yr, double amt)
         {
             CarID = cid;

@@ -13,8 +13,10 @@ namespace Assignment1
             #endregion
 
             #region Q2
-            Car c2 = new Car(2, "Honda", "City", 2022, 500000);
+            Car c2 = new Car(); // Default Constructor
             c2.GetCarDetails();
+            Car c3 = new Car(2, "Honda", "City", 2022, 500000); // Overloaded Parameterized Constructor
+            c3.GetCarDetails();
             #endregion
         }
     }
