@@ -6,6 +6,7 @@ namespace Assignment1
     {
         static void Main(string[] args)
         {
+            #region Q1
             // Using class
             User user1 = new User("omie", "1234");
             Console.WriteLine($"Welcome, {user1.Username}.");
@@ -16,6 +17,7 @@ namespace Assignment1
             User user3 = new User("kaps", "9012");
             Console.WriteLine($"Welcome, {user3.Username}.");
             Console.WriteLine($"There are currently {user3.GetLoggedInUsers()} logged in users!");
+            #endregion
         }
     }
 }
