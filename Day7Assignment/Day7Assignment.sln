@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment1", "Assignment1\Assignment1.csproj", "{C74D026A-54C6-4E98-8269-C02C25F200ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment2", "Assignment2\Assignment2.csproj", "{AF7E562E-45C8-42DC-AD25-8CFF298AC38D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C74D026A-54C6-4E98-8269-C02C25F200ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C74D026A-54C6-4E98-8269-C02C25F200ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C74D026A-54C6-4E98-8269-C02C25F200ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C74D026A-54C6-4E98-8269-C02C25F200ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF7E562E-45C8-42DC-AD25-8CFF298AC38D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF7E562E-45C8-42DC-AD25-8CFF298AC38D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF7E562E-45C8-42DC-AD25-8CFF298AC38D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF7E562E-45C8-42DC-AD25-8CFF298AC38D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
