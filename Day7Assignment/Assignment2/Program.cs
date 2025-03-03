@@ -11,6 +11,7 @@
                 new Products() { ProductID = 3, ProductName = "Smartphone", ProductCategory = "Electronics", ProductPrice = 15999.99M},
                 new Products() { ProductID = 4, ProductName = "Handkerchief Set", ProductCategory = "Clothes", ProductPrice = 100M},
                 new Products() { ProductID = 5, ProductName = "Smartwatch", ProductCategory = "Electronics", ProductPrice = 999.49M},
+                new Products() { ProductID = 6, ProductName = "TV 2", ProductCategory = "Electronics", ProductPrice = 30000M},
             };
 
             #region Q1
@@ -26,9 +27,15 @@
             #endregion
 
             #region Q3
-            var expensiveProduct = productsList.MaxBy(p => p.ProductPrice);
+            var expensiveProduct = productsList.Max(p => p.ProductPrice);
             Console.WriteLine("Most expensive product available in list: ");
-            Console.WriteLine($"Name: {expensiveProduct.ProductName} \t Price: {expensiveProduct.ProductPrice}");
+            foreach (var product in productsList)
+            {
+                if (expensiveProduct == product.ProductPrice)
+                {
+                    Console.WriteLine($"Name: {product.ProductName} \t Price: {product.ProductPrice}");
+                }
+            }
             #endregion
         }
     }
