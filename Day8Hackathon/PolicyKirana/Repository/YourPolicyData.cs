@@ -33,7 +33,7 @@ namespace PolicyKirana.Repository
             if (flag == 0)
             {
                 policyData.Add(
-                    new Policy() { PolicyID = pID, PolicyHolderName = uname, PolicyType = policyType, StartDate = DateTime.Now, EndDate = endD }
+                    new Policy() { PolicyID = pID, Username = uname, PolicyHolderName = uname, PolicyType = policyType, StartDate = DateTime.Now, EndDate = endD }
                 );
                 Console.WriteLine($"{policyType.ToString()} Policy added successfully.");
                 ViewYourPolicy(uname);
@@ -120,7 +120,7 @@ namespace PolicyKirana.Repository
         {
             foreach (var policy in policyData)
             {
-                if (uname == policy.PolicyHolderName)
+                if (uname == policy.Username)
                 {
                     if (policyData.Count == 0)
                     {
