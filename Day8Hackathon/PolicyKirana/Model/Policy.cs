@@ -94,7 +94,14 @@ namespace PolicyKirana.Model
                         pD.DeleteYourPolicy(pidDelete);
                         break;
                     case 4:
-                        pD.ViewYourPolicy(Username);
+                        if (pD.IsActive(Username))
+                        {
+                            pD.ViewYourPolicy(Username);
+                        }
+                        else
+                        {
+                            Console.WriteLine("No active policy!");
+                        }
                         break;
                     case 5:
                         Console.WriteLine("Going back...");

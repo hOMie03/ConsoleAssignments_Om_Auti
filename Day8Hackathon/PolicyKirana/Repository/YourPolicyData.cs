@@ -62,7 +62,7 @@ namespace PolicyKirana.Repository
             {
                 if (pID == policy.PolicyID)
                 {
-                    Console.WriteLine("Do you want to change the policy holder name (y/n): ");
+                    Console.WriteLine("Do you want to change the policy holder name (Press y if yes): ");
                     string changeName = Console.ReadLine();
                     string name;
                     if (changeName.ToUpper() == "Y")
@@ -71,18 +71,33 @@ namespace PolicyKirana.Repository
                         name = Console.ReadLine();
                         policy.PolicyHolderName = name;
                     }
-                    Console.WriteLine("Change the start date: ");
+                    Console.WriteLine("Change the start date (MM-DD-YYYY): ");
                     DateTime startDate= Convert.ToDateTime(Console.ReadLine());
                     Console.WriteLine("How many years do you want the policy to be alive: ");
                     var yearOfPolicies = Convert.ToInt32(Console.ReadLine());
                     int diff = startDate.Year + yearOfPolicies;
-                    DateTime endDate = new DateTime(diff,startDate.Month,startDate.Day); 
-                    Console.WriteLine("Which Type (1. Life, 2. Health, 3. Vehicle, 4. Property): ");
-                    int pType = Convert.ToInt32(Console.ReadLine());
-                    PType chosenType = (PType)pType;
+                    DateTime endDate = new DateTime(diff, startDate.Month, startDate.Day);
                     policy.StartDate = startDate;
                     policy.EndDate = endDate;
-                    policy.PolicyType = chosenType;
+                    Console.WriteLine("Do you want to change the policy type (Press y if yes): ");
+                    string changeType = Console.ReadLine();
+                    string type;
+                    if (changeType.ToUpper() == "Y")
+                    {
+                        takePolicyChoice:
+                        Console.WriteLine("Which Type? Enter choice number\n(1. Life, 2. Health, 3. Vehicle, 4. Property): ");
+                        int pType = Convert.ToInt32(Console.ReadLine());
+                        if (pType > 0 && pType < 4)
+                        {
+                            PType chosenType = (PType)pType;
+                            policy.PolicyType = chosenType;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Wrong input added!");
+                            goto takePolicyChoice;
+                        }
+                    }
                     Console.WriteLine("Updated Successfully!");
                     break;
                 }
@@ -134,6 +149,21 @@ namespace PolicyKirana.Repository
                     }
                 }
             }
+        }
+
+        public bool IsActive(string uname)
+        {
+            foreach (var policy in policyData)
+            {
+                if (uname == policy.Username)
+                {
+                    if (policy.EndDate < DateTime.Now)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
 
