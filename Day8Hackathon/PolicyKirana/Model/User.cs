@@ -13,11 +13,14 @@ namespace PolicyKirana.Model
         public string Password { get; set; }
 
         Dictionary<string, string> userData = new Dictionary<string, string>();
+
+        // Constructor Initialization
         public User()
         {
             userData["admin"] = "admin";
         }
 
+        // Register User
         public void Register(string uname, string pswd)
         {
             Username = uname;
@@ -31,6 +34,7 @@ namespace PolicyKirana.Model
             //}
         }
 
+        // Login User
         public bool Login(string uname, string pswd)
         {
             Username = uname;

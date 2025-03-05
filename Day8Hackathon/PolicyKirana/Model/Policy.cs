@@ -12,6 +12,7 @@ namespace PolicyKirana.Model
 {
     internal class Policy : User, IPolicy
     {
+        //Properties
         public string PolicyID { get; set; }
         public string PolicyHolderName { get; set; }
         public PType PolicyType { get; set; }
@@ -68,8 +69,9 @@ namespace PolicyKirana.Model
                 Console.WriteLine("1. Search Policy by Policy ID");
                 Console.WriteLine("2. Update Policy Details");
                 Console.WriteLine("3. Delete a Policy");
-                Console.WriteLine("4. View Active Policy");
-                Console.WriteLine("5. Go back");
+                Console.WriteLine("4. View Active Policies");
+                Console.WriteLine("5. View All Policies");
+                Console.WriteLine("6. Go back");
                 bool choiceCheck = int.TryParse(Console.ReadLine(), out choice);
                 if (!choiceCheck)
                 {
@@ -81,17 +83,17 @@ namespace PolicyKirana.Model
                     case 1:
                         Console.WriteLine("Please enter the Policy ID: ");
                         string pidSearch = Console.ReadLine();
-                        pD.SearchYourPolicy(pidSearch);
+                        pD.SearchYourPolicy(pidSearch, Username);
                         break;
                     case 2:
                         Console.WriteLine("Please enter the Policy ID to update: ");
                         string pidUpdate = Console.ReadLine();
-                        pD.UpdateYourPolicy(pidUpdate);
+                        pD.UpdateYourPolicy(pidUpdate, Username);
                         break;
                     case 3:
                         Console.WriteLine("Please enter the Policy ID to search: ");
                         string pidDelete = Console.ReadLine();
-                        pD.DeleteYourPolicy(pidDelete);
+                        pD.DeleteYourPolicy(pidDelete, Username);
                         break;
                     case 4:
                         if (pD.IsActive(Username))
@@ -104,14 +106,17 @@ namespace PolicyKirana.Model
                         }
                         break;
                     case 5:
+                        pD.ViewYourPolicy(Username);
+                        break;
+                    case 6:
                         Console.WriteLine("Going back...");
                         break;
                     default:
                         Console.WriteLine("Incorrect Input!");
                         break;
                 }
-                if (choice == 5) break;
-            } while (choice < 6);
+                if (choice == 6) break;
+            } while (choice < 7);
 
         }
 

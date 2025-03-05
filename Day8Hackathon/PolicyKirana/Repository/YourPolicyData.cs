@@ -13,6 +13,7 @@ namespace PolicyKirana.Repository
         List<Policy> policyData = new List<Policy>();
         public YourPolicyData() { }
 
+        // Adding policy
         public void AddYourPolicies(PType policyType, int pTypeNum, string uname)
         {
             string pID = pTypeNum + uname + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year;
@@ -39,12 +40,14 @@ namespace PolicyKirana.Repository
                 ViewYourPolicy(uname);
             }
         }
-        public void SearchYourPolicy(string pID)
+
+        // Searching Policy by ID
+        public void SearchYourPolicy(string pID, string uname)
         {
             foreach (var policy in policyData)
             {
 
-                if (pID == policy.PolicyID)
+                if (pID == policy.PolicyID && uname == policy.Username)
                 {
                     Console.WriteLine($"Policy Holder Name: {policy.PolicyHolderName} \t ID: {policy.PolicyID} \t Type: {policy.PolicyType}");
                     Console.WriteLine($"Start Date: {policy.StartDate} \t End Date: {policy.EndDate}");
@@ -56,11 +59,13 @@ namespace PolicyKirana.Repository
                 }
             }
         }
-        public void UpdateYourPolicy(string pID)
+
+        // Updating Policy by ID
+        public void UpdateYourPolicy(string pID, string uname)
         {
             foreach (var policy in policyData)
             {
-                if (pID == policy.PolicyID)
+                if (pID == policy.PolicyID && uname == policy.Username)
                 {
                     Console.WriteLine("Do you want to change the policy holder name (Press y if yes): ");
                     string changeName = Console.ReadLine();
@@ -107,14 +112,17 @@ namespace PolicyKirana.Repository
                 }
             }
         }
-        public void DeleteYourPolicy(string pID)
+
+        // Deleting Policy by ID
+        public void DeleteYourPolicy(string pID, string uname)
         {
+            // Exception Handling
             try
             {
                 foreach (var policy in policyData)
                 {
 
-                    if (pID == policy.PolicyID)
+                    if (pID == policy.PolicyID && uname == policy.Username)
                     {
                         policyData.Remove(policy);
                         Console.WriteLine($"Your Policy having ID {pID} has successfully been deleted.");
@@ -122,7 +130,7 @@ namespace PolicyKirana.Repository
                     }
                     else
                     {
-                        throw new PolicyNotFound("Policy not found");
+                        throw new PolicyNotFound("Policy not found. Please enter correct policy ID");
                     }
                 }
             }
@@ -131,6 +139,8 @@ namespace PolicyKirana.Repository
                 Console.WriteLine(pnfex.Message);
             }
         }
+
+        // Viewing Policy
         public void ViewYourPolicy(string uname)
         {
             foreach (var policy in policyData)
@@ -151,6 +161,7 @@ namespace PolicyKirana.Repository
             }
         }
 
+        // Checking active policies
         public bool IsActive(string uname)
         {
             foreach (var policy in policyData)
@@ -165,8 +176,6 @@ namespace PolicyKirana.Repository
             }
             return true;
         }
-
-
 
     }
 }
