@@ -12,3 +12,8 @@ SELECT CustomerID FROM Orders GROUP BY CustomerID
 SELECT * FROM Books WHERE Title LIKE '%SQL%'
 
 SELECT TOP 1 * FROM Books ORDER BY Price DESC
+
+SELECT * FROM Customers WHERE Name LIKE '[A_J]%'
+
+SELECT SUM(TotalAmount) AS TotalRevenue FROM Orders
+
