@@ -1,5 +1,6 @@
 use BookStoreDB
 
+-- Q1
 INSERT INTO Authors VALUES (101, 'Stephen King', 'American'), (102, 'Vanishree', 'Indian'),
 (103, 'Stephen Hawking', 'UK'), (104, 'J. K. Rowling', 'UK'), (105, 'William Shakespeare', 'UK')
 
@@ -17,10 +18,12 @@ INSERT INTO Orders VALUES (111, 10001, '03-12-2024', 400), (112, 10002, '02-02-2
 INSERT INTO OrderItems VALUES (111, 1002, 1, 400), (112, 1001, 2, 300), (113, 1005, 5, 100),
 (114, 1004, 2, 699), (115, 1003, 1, 200)
 
+-- Q2
 UPDATE Books
 SET Price = Price * 1.10
 WHERE Title = 'SQL Mastery'
 
+-- Q3
 INSERT INTO Customers VALUES (10006, 'Rahul', 'rahul@neosoft.com', 7734567812)
 
 DELETE Customers FROM Customers
