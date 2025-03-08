@@ -3,7 +3,7 @@ use BookStoreDB
 -- Q1
 SELECT o.CustomerID, c.Name, o.OrderDate FROM Orders o, Customers c
 WHERE c.CustomerID = o.CustomerID
-AND o.OrderID = (SELECT TOP 1 OrderID FROM Orders ORDER BY OrderDate ASC)
+AND o.OrderDate = (SELECT MIN(OrderDate) FROM Orders)
 
 -- Q2
 INSERT INTO Orders VALUES (116, 10003, '2021-08-23', 1000)
@@ -26,3 +26,4 @@ WHERE BookID != (SELECT TOP 1 BookID FROM Books ORDER BY Price DESC)
 SELECT o.CustomerID, c.Name, o.TotalAmount FROM Orders o, Customers c
 WHERE c.CustomerID = o.CustomerID
 AND TotalAmount > (SELECT AVG(TotalAmount) FROM Orders)
+
