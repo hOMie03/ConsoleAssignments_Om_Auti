@@ -28,3 +28,15 @@ DELETE FROM UserDetails WHERE UserID = 2
 INSERT INTO PolicyDetails VALUES (1110032025, 1, 'admin', 1, '2025/03/10', '2030/03/10')
 SELECT * FROM PolicyDetails
 SELECT * FROM PolicyDetails WHERE UserID = (SELECT UserID FROM UserDetails WHERE Username = 'admin')
+
+CREATE TRIGGER tk_EndDateWrong ON PolicyDetails FOR UPDATE
+AS
+BEGIN
+	IF EXISTS (
+        SELECT 1 FROM inserted WHERE EndDate <= StartDate
+    )
+    BEGIN
+        PRINT 'Error: EndDate must be greater than StartDate.';
+        ROLLBACK TRANSACTION;
+    END
+END;

@@ -35,6 +35,7 @@ namespace PolicyKirana.Repository
                 using (SqlConnection sqlConn = new SqlConnection(DBConnUtil.GetConnectionString()))
                 {
                     cmd.Parameters.Clear();
+                    // Checking If any policy exists by storing existing policies in a list
                     cmd.CommandText = "SELECT * FROM PolicyDetails WHERE UserID = (SELECT UserID FROM UserDetails WHERE Username = @UName)";
                     cmd.Connection = sqlConn;
                     cmd.Parameters.AddWithValue("@UName", uname);
@@ -47,6 +48,7 @@ namespace PolicyKirana.Repository
                     }
                     sqlConn.Close();
 
+                    // Taking UserID
                     cmd.CommandText = "SELECT * FROM UserDetails WHERE Username = @UNameCheck";
                     cmd.Connection = sqlConn;
                     cmd.Parameters.AddWithValue("@UNameCheck", uname);
@@ -63,8 +65,10 @@ namespace PolicyKirana.Repository
                     polID = Convert.ToInt64(pID);
                     foreach (var policyid in policyidCheck)
                     {
+
                         if (policyid != polID)
                         {
+                            // Inserting
                             cmd.CommandText = "INSERT INTO PolicyDetails VALUES (@PolID, @UID, @PHName, @PolType, @SDate, @EDate)";
                             cmd.Connection = sqlConn;
                             cmd.Parameters.AddWithValue("@PolID", polID);
@@ -172,26 +176,33 @@ namespace PolicyKirana.Repository
                     Console.WriteLine("Which Type? Enter choice number\n(1. Life, 2. Health, 3. Vehicle, 4. Property): ");
                     poliType = Convert.ToInt32(Console.ReadLine());
                 }
-                using (SqlConnection sqlConn = new SqlConnection(DBConnUtil.GetConnectionString()))
+                try
                 {
-                    cmd.Parameters.Clear();
-                    cmd.CommandText = "UPDATE PolicyDetails SET PolicyHolderName = @PHName, PolicyType = @PolType, EndDate = @eDate WHERE PolicyID = @PolicyID AND UserID = (SELECT UserID FROM UserDetails WHERE Username = @UName)";
-                    cmd.Connection = sqlConn;
-                    cmd.Parameters.AddWithValue("@PHName", holderName);
-                    cmd.Parameters.AddWithValue("@eDate", endD);
-                    cmd.Parameters.AddWithValue("@PolType", poliType);
-                    cmd.Parameters.AddWithValue("@PolicyID", pID);
-                    cmd.Parameters.AddWithValue("@UName", uname);
-                    sqlConn.Open();
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    if (rowsAffected > 0)
+                    using (SqlConnection sqlConn = new SqlConnection(DBConnUtil.GetConnectionString()))
                     {
-                        Console.WriteLine("Update done successfully");
+                        cmd.Parameters.Clear();
+                        cmd.CommandText = "UPDATE PolicyDetails SET PolicyHolderName = @PHName, PolicyType = @PolType, EndDate = @eDate WHERE PolicyID = @PolicyID AND UserID = (SELECT UserID FROM UserDetails WHERE Username = @UName)";
+                        cmd.Connection = sqlConn;
+                        cmd.Parameters.AddWithValue("@PHName", holderName);
+                        cmd.Parameters.AddWithValue("@eDate", endD);
+                        cmd.Parameters.AddWithValue("@PolType", poliType);
+                        cmd.Parameters.AddWithValue("@PolicyID", pID);
+                        cmd.Parameters.AddWithValue("@UName", uname);
+                        sqlConn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            Console.WriteLine("Update done successfully");
+                        }
+                        else
+                        {
+                            Console.WriteLine("No changes done.");
+                        }
                     }
-                    else
-                    {
-                        Console.WriteLine("No changes done.");
-                    }
+                }
+                catch(SqlException ex)
+                {
+                    Console.WriteLine("End date can't be changed to the past, duh!"); // Trigger Error
                 }
             }
             else
