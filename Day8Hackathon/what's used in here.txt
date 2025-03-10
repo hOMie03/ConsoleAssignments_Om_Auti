@@ -1,0 +1,8 @@
+login/signup
+register new policy
+view policy
+search policy by id
+Collection types used: List, Dictionary, Enum
+Exception Handling: PolicyNotFound
+Two interfaces: IUser, IPolicy
+Switch cases: A LOT OF 'EM!
