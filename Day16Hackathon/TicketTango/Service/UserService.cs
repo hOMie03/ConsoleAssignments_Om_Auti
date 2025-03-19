@@ -19,5 +19,9 @@ namespace TicketTango.Service
             var user = await _userRepository.Login(email, pswd);
             return user;
         }
+        public async Task<int> Register(User user)
+        {
+            return await _userRepository.Register(user);
+        }
     }
 }

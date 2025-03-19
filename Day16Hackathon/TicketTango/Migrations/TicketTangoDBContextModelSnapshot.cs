@@ -94,7 +94,7 @@ namespace TicketTango.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -114,6 +114,8 @@ namespace TicketTango.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasAlternateKey("Email");
 
                     b.ToTable("Users");
                 });

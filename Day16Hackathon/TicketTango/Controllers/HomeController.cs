@@ -18,6 +18,7 @@ namespace TicketTango.Controllers
             return View(await _eventService.GetAllEventsAsync());
         }
 
+
         public IActionResult Privacy()
         {
             return View();

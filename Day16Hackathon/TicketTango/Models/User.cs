@@ -17,8 +17,8 @@ namespace TicketTango.Models
         
         [NotMapped]
         public string Name {
-            get { return Name; }
-            set { Name = FirstName + " " + LastName; }
+            get { return FirstName + " " + LastName; }
+            //set { Name = FirstName + " " + LastName; }
         }
 
         [Required, NotNull, EmailAddress]

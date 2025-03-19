@@ -40,9 +40,16 @@ namespace TicketTango.Controllers
             }
             else
             {
-                TempData["ErrorMsg"] = "Invalid Email/Password";
+                TempData["message"] = "Invalid Email/Password";
                 return RedirectToAction("Index");
             }
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("UserID");
+            TempData["LogoutMsg"] = "Logout Successfully!";
+            return Redirect("/Home/Index");
         }
     }
 }

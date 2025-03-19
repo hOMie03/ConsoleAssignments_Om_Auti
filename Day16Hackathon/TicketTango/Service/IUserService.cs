@@ -6,5 +6,6 @@ namespace TicketTango.Service
     public interface IUserService
     {
         Task<User> Login(string email, string pswd);
+        Task<int> Register(User user);
     }
 }

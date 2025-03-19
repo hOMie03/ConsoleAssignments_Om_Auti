@@ -4,11 +4,8 @@
     ViewData["Title"] = "Home";
 }
 
-<h1>GetAllEvents</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<h1>Amazin' Events Currently</h1>
+<h2>@TempData["LogoutMsg"]</h2>
 <table class="table">
     <thead>
         <tr>
@@ -48,11 +45,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TicketPrice)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
                 </td>
             </tr>
         }
