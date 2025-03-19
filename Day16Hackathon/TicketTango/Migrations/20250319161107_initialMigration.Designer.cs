@@ -12,7 +12,7 @@ using TicketTango.Context;
 namespace TicketTango.Migrations
 {
     [DbContext(typeof(TicketTangoDBContext))]
-    [Migration("20250319051431_initialMigration")]
+    [Migration("20250319161107_initialMigration")]
     partial class initialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,6 +73,9 @@ namespace TicketTango.Migrations
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
+
+                    b.Property<decimal>("TotalCost")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");

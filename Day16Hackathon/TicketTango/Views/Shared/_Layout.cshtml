@@ -35,6 +35,11 @@
                         }
                         else
                         {
+                            ViewBag.UID = Context.Session.GetInt32("UserID");
+                            <form asp-controller="TicketBooking" asp-action="GetBookingsByUserId" method="get">
+                                <input type="hidden" name="userID" value="@ViewBag.UID" />
+                                <button type="submit" class="btn btn-primary">Your Tix</button>
+                            </form>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
                             </li>

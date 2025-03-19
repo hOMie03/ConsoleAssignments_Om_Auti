@@ -21,6 +21,9 @@ namespace TicketTango.Models
         public int Quantity { get; set; }
 
         [Required, NotNull]
+        public decimal TotalCost { get; set; }
+
+        [Required, NotNull]
         public DateTime BookingDate { get; set; }
 
         [Required, NotNull]

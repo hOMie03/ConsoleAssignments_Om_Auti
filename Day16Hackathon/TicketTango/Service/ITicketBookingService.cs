@@ -1,8 +1,8 @@
 ﻿using TicketTango.Models;
 
-namespace TicketTango.Repository
+namespace TicketTango.Service
 {
-    public interface ITicketBookingRepository
+    public interface ITicketBookingService
     {
         Task<IEnumerable<TicketBooking>> GetBookingsByUserIdAsync(int userID);
         Task<int> BookTicketAsync(int userID, int eventID, int quantity);

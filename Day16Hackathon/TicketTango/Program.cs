@@ -20,6 +20,8 @@ namespace TicketTango
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IEventService, EventService>();
             builder.Services.AddScoped<IEventRepository, EventRepository>();
+            builder.Services.AddScoped<ITicketBookingService, TicketBookingService>();
+            builder.Services.AddScoped<ITicketBookingRepository, TicketBookingRepository>();
             builder.Services.AddSession();
 
             var app = builder.Build();
