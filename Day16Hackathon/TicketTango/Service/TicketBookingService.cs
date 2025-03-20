@@ -27,5 +27,14 @@ namespace TicketTango.Service
             }
             return foundTix;
         }
+
+        public async Task<TicketBooking> GetTixByUserAndBookingIdAsync(int userID, int bookingID)
+        {
+            return await _tbRepository.GetTixByUserAndBookingIdAsync(userID, bookingID);
+        }
+        public async Task<int> CancelBookingAsync(int bookingID)
+        {
+            return await _tbRepository.CancelBookingAsync(bookingID);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TicketTango.Filters;
 using TicketTango.Models;
 using TicketTango.Service;
 
@@ -11,10 +12,14 @@ namespace TicketTango.Controllers
         {
             _eventService = eventService;
         }
+
+        [ServiceFilter(typeof(userAuthorizeFilter))]
         public async Task<IActionResult> Index()
         {
             return View(await _eventService.GetAllEventsAsync());
         }
+
+        [ServiceFilter(typeof(userAuthorizeFilter))]
         public async Task<IActionResult> GetEventByID(int id)
         {
             try
@@ -28,6 +33,7 @@ namespace TicketTango.Controllers
             }
         }
 
+        [ServiceFilter(typeof(userAuthorizeFilter))]
         public IActionResult AddEvent()
         {
             return View();
@@ -53,6 +59,7 @@ namespace TicketTango.Controllers
             }
         }
 
+        [ServiceFilter(typeof(userAuthorizeFilter))]
         public async Task<IActionResult> UpdateEvent(int id)
         {
 
@@ -75,6 +82,7 @@ namespace TicketTango.Controllers
             }
         }
 
+        [ServiceFilter(typeof(userAuthorizeFilter))]
         public async Task<IActionResult> DeleteEvent(int id)
         {
             var eventResult = await _eventService.GetEventByIdAsync(id);
@@ -96,10 +104,5 @@ namespace TicketTango.Controllers
             }
         }
 
-        public async Task<IActionResult> SearchEvent(string searched)
-        {
-            var events = await _eventService.SearchEventAsync(searched);
-            return View(events);
-        }
     }
 }

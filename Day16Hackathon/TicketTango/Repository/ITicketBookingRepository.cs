@@ -6,6 +6,8 @@ namespace TicketTango.Repository
     {
         Task<IEnumerable<TicketBooking>> GetBookingsByUserIdAsync(int userID);
         Task<int> BookTicketAsync(int userID, int eventID, int quantity);
-        //Task CancelBookingAsync(int bookingId);
+
+        Task<TicketBooking> GetTixByUserAndBookingIdAsync(int userID, int bookingID);
+        Task<int> CancelBookingAsync(int bookingId);
     }
 }

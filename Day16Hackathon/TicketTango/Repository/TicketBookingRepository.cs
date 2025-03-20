@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using TicketTango.Context;
+using TicketTango.Exceptions;
 using TicketTango.Models;
 using TicketTango.ViewModels;
 
@@ -38,6 +39,28 @@ namespace TicketTango.Repository
         {
             var bookings = await _ttDBContext.TicketBookings.Where(t => t.UserID == userID).ToListAsync();
             return bookings;
+        }
+
+
+        public async Task<TicketBooking> GetTixByUserAndBookingIdAsync(int userID, int bookingID)
+        {
+            var tixFound = await _ttDBContext.TicketBookings.FirstOrDefaultAsync(t => t.UserID == userID && t.ID == bookingID);
+            return tixFound;
+        }
+        public async Task<int> CancelBookingAsync(int bookingID)
+        {
+            var tixFound = await _ttDBContext.TicketBookings.FirstOrDefaultAsync(t => t.ID == bookingID);
+            var eventFound = await _eventRepository.GetEventByIdAsync(tixFound.EventID);
+            if(tixFound.Status == true && eventFound.DateOfEvent > DateTime.Now)
+            {
+                _ttDBContext.TicketBookings.Remove(tixFound);
+
+            }
+            else
+            {
+                throw new BookingNotFoundException($"You are too late buddy {bookingID}");
+            }
+            return await _ttDBContext.SaveChangesAsync();
         }
     }
 }

@@ -36,7 +36,7 @@ namespace TicketTango.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Login");
             }
         }
         [HttpPost]
@@ -65,6 +65,32 @@ namespace TicketTango.Controllers
             catch (ApplicationException ex)
             {
                 TempData["emptyError"]= ex.Message;
+                return View();
+            }
+        }
+
+        public async Task<IActionResult> CancelBooking(int id)
+        {
+            int? userID = HttpContext.Session.GetInt32("UserID");
+            if (userID != null && userID > 0)
+            {
+                var eventResult = await _tbService.GetTixByUserAndBookingIdAsync((int)userID, id);
+                return View(eventResult);
+            }
+            return RedirectToAction("Index", "Login");
+        }
+        [HttpPost]
+        public async Task<IActionResult> CancelBooking(int id, string name)
+        {
+            try
+            {
+                var userTix = await _tbService.CancelBookingAsync(id);
+                TempData["message"] = "Your ticket has been deleted. Refund will be done in next 7 business days.";
+                return RedirectToAction("Index", "Home");
+            }
+            catch (ApplicationException ex)
+            {
+                TempData["cancelError"] = ex.Message;
                 return View();
             }
         }

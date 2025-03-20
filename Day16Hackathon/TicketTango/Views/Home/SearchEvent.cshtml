@@ -49,9 +49,12 @@
                 @Html.DisplayFor(modelItem => item.TicketPrice)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                <form asp-controller="TicketBooking" asp-action="BookTicket" method="get">
+                    <input type="hidden" name="userID" value="@Context.Session.GetInt32("UserID")" />
+                    <input type="hidden" name="eventID" value="@Html.DisplayFor(modelItem => item.ID)" />
+                    <input type="number" name="quantity" placeholder="How much?" required />
+                    <button type="submit" class="btn btn-primary">Book Tix</button>
+                </form>
             </td>
         </tr>
 }

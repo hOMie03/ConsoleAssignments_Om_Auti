@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TicketTango.Context;
+using TicketTango.Filters;
 using TicketTango.Repository;
 using TicketTango.Service;
 
@@ -22,6 +23,8 @@ namespace TicketTango
             builder.Services.AddScoped<IEventRepository, EventRepository>();
             builder.Services.AddScoped<ITicketBookingService, TicketBookingService>();
             builder.Services.AddScoped<ITicketBookingRepository, TicketBookingRepository>();
+
+            builder.Services.AddSingleton<userAuthorizeFilter>();
             builder.Services.AddSession();
 
             var app = builder.Build();

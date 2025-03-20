@@ -18,10 +18,10 @@ namespace TicketTango.Controllers
             return View(await _eventService.GetAllEventsAsync());
         }
 
-
-        public IActionResult Privacy()
+        public async Task<IActionResult> SearchEvent(string searched)
         {
-            return View();
+            var events = await _eventService.SearchEventAsync(searched);
+            return View(events);
         }
     }
 }
