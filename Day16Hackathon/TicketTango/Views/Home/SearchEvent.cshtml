@@ -5,6 +5,7 @@
 }
 
 <h1>SearchEvent</h1>
+<h2>@TempData["EventNotFound"]</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -31,32 +32,34 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfEvent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AvailableSeats)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TicketPrice)
-            </td>
-            <td>
-                <form asp-controller="TicketBooking" asp-action="BookTicket" method="get">
-                    <input type="hidden" name="userID" value="@Context.Session.GetInt32("UserID")" />
-                    <input type="hidden" name="eventID" value="@Html.DisplayFor(modelItem => item.ID)" />
-                    <input type="number" name="quantity" placeholder="How much?" required />
-                    <button type="submit" class="btn btn-primary">Book Tix</button>
-                </form>
-            </td>
-        </tr>
-}
+        @if(Model != null) {
+            @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Location)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfEvent)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AvailableSeats)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TicketPrice)
+                        </td>
+                        <td>
+                            <form asp-controller="TicketBooking" asp-action="BookTicket" method="get">
+                                <input type="hidden" name="userID" value="@Context.Session.GetInt32("UserID")" />
+                                <input type="hidden" name="eventID" value="@Html.DisplayFor(modelItem => item.ID)" />
+                                <input type="number" name="quantity" placeholder="How much?" required />
+                                <button type="submit" class="btn btn-primary">Book Tix</button>
+                            </form>
+                        </td>
+                    </tr>
+            }
+        }
     </tbody>
 </table>

@@ -44,9 +44,16 @@ namespace TicketTango.Repository
             _ttDBContext.Events.Remove(selectedEvent);
             return await _ttDBContext.SaveChangesAsync();
         }
+
+        // Extras
         public async Task<IEnumerable<Event>> SearchEventAsync(string searched)
         {
-            return await _ttDBContext.Events.Where(b => b.Name.Contains(searched) || b.Location.Contains(searched)).ToListAsync();
+            var foundEvent = await _ttDBContext.Events.Where(b => b.Name.Contains(searched) || b.Location.Contains(searched)).ToListAsync();
+            return foundEvent;
+        }
+        public async Task<IEnumerable<Event>> GetAllActiveEventsAsync()
+        {
+            return await _ttDBContext.Events.Where(b => b.DateOfEvent > DateTime.Now).ToListAsync();
         }
     }
 }

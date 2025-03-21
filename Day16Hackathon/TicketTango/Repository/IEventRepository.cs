@@ -9,6 +9,8 @@ namespace TicketTango.Repository
         Task<int> AddEventAsync(Event eventEntity);
         Task<int> UpdateEventAsync(Event eventEntity);
         Task<int> DeleteEventAsync(int id);
+
         Task<IEnumerable<Event>> SearchEventAsync(string searched);
+        Task<IEnumerable<Event>> GetAllActiveEventsAsync();
     }
 }

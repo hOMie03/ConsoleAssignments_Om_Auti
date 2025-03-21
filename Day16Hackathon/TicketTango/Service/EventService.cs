@@ -38,9 +38,23 @@ namespace TicketTango.Service
         {
             return await _eventRepository.DeleteEventAsync(id);
         }
+
+        // Extras
         public async Task<IEnumerable<Event>> SearchEventAsync(string searched)
         {
-            return await _eventRepository.SearchEventAsync(searched);
+            var foundEvent =  await _eventRepository.SearchEventAsync(searched);
+            if (foundEvent.Count() > 0)
+            {
+                return foundEvent;
+            }
+            else
+            {
+                throw new EventNotFoundException(($"Uh-oh, no related event found!"));
+            }
+        }
+        public async Task<IEnumerable<Event>> GetAllActiveEventsAsync()
+        {
+            return await _eventRepository.GetAllActiveEventsAsync();
         }
     }
 }

@@ -48,6 +48,7 @@ namespace TicketTango.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("UserID");
+            HttpContext.Session.Remove("UserRole");
             TempData["LogoutMsg"] = "Logout Successfully!";
             return Redirect("/Home/Index");
         }

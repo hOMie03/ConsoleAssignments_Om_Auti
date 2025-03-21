@@ -33,6 +33,8 @@ namespace TicketTango.Repository
                 Status = true
             };
             await _ttDBContext.TicketBookings.AddAsync(tixAdd);
+            eventDetails.AvailableSeats = eventDetails.AvailableSeats - quantity;
+            _ttDBContext.Events.Update(eventDetails);
             return await _ttDBContext.SaveChangesAsync();
         }
         public async Task<IEnumerable<TicketBooking>> GetBookingsByUserIdAsync(int userID)
@@ -60,6 +62,8 @@ namespace TicketTango.Repository
             {
                 throw new BookingNotFoundException($"You are too late buddy {bookingID}");
             }
+            eventFound.AvailableSeats = eventFound.AvailableSeats + tixFound.Quantity;
+            _ttDBContext.Events.Update(eventFound);
             return await _ttDBContext.SaveChangesAsync();
         }
     }

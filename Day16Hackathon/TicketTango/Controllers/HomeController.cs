@@ -15,13 +15,21 @@ namespace TicketTango.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _eventService.GetAllEventsAsync());
+            return View(await _eventService.GetAllActiveEventsAsync());
         }
 
         public async Task<IActionResult> SearchEvent(string searched)
         {
-            var events = await _eventService.SearchEventAsync(searched);
-            return View(events);
+            try
+            {
+                var events = await _eventService.SearchEventAsync(searched);
+                return View(events);
+            }
+            catch (ApplicationException ex)
+            {
+                TempData["eventNotFound"] = ex.Message;
+                return View();
+            }
         }
     }
 }
