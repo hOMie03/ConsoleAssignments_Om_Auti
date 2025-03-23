@@ -19,7 +19,7 @@ namespace TicketTango.Controllers
             return View(await _eventService.GetAllEventsAsync());
         }
 
-        [ServiceFilter(typeof(userAuthorizeFilter))]
+        //[ServiceFilter(typeof(userAuthorizeFilter))]
         public async Task<IActionResult> GetEventByID(int id)
         {
             try
@@ -62,7 +62,6 @@ namespace TicketTango.Controllers
         [ServiceFilter(typeof(userAuthorizeFilter))]
         public async Task<IActionResult> UpdateEvent(int id)
         {
-
             var eventResult = await _eventService.GetEventByIdAsync(id);
             return View(eventResult);
         }

@@ -36,6 +36,7 @@ namespace TicketTango.Repository
             event2Update.DateOfEvent = eventEntity.DateOfEvent;
             event2Update.AvailableSeats = eventEntity.AvailableSeats;
             event2Update.TicketPrice = eventEntity.TicketPrice;
+            _ttDBContext.Events.Update(event2Update);
             return await _ttDBContext.SaveChangesAsync();
         }
         public async Task<int> DeleteEventAsync(int id)

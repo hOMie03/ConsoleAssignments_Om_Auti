@@ -1,15 +1,14 @@
 ﻿@model IEnumerable<TicketTango.Models.Event>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "GetAllEvents";
 }
 
 <div class="text-white">
-    <h1>All Events History in TicketTango</h1>
-    <h2>@TempData["message"]</h2>
+    <h1>All Events</h1>
 
     <p>
-        <a asp-action="AddEvent">Add New Event</a>
+        <a asp-action="Create">Create New</a>
     </p>
     <table class="table text-white">
         <thead>
@@ -28,9 +27,6 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.TicketPrice)
-                </th>
-                <th>
-                    Status
                 </th>
                 <th></th>
             </tr>
@@ -54,19 +50,9 @@
                     @Html.DisplayFor(modelItem => item.TicketPrice)
                 </td>
                 <td>
-                    @if(item.DateOfEvent < DateTime.Now)
-                    {
-                        @Html.DisplayName("Completed")
-                    }
-                    else
-                    {
-                        @Html.DisplayName("Not Completed")
-                    }
-                </td>
-                <td>
-                    <a asp-action="UpdateEvent" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="GetEventByID" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="DeleteEvent" asp-route-id="@item.ID">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
                 </td>
             </tr>
     }

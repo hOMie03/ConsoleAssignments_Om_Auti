@@ -23,5 +23,15 @@ namespace TicketTango.Service
         {
             return await _userRepository.Register(user);
         }
+
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            return await _userRepository.GetAllUsersAsync();
+        }
+        public async Task<int> PromoteToEventOrgAsync(int userID)
+        {
+            var promoteCount = await _userRepository.PromoteToEventOrgAsync(userID);
+            return promoteCount;
+        }
     }
 }

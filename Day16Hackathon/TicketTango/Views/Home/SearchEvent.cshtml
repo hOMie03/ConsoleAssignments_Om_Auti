@@ -7,59 +7,41 @@
 <h1>SearchEvent</h1>
 <h2>@TempData["EventNotFound"]</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateOfEvent)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AvailableSeats)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TicketPrice)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if(Model != null) {
-            @foreach (var item in Model) {
-                    <tr>
-                        <td>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card">
+                    <img src="https://i.pinimg.com/originals/92/7c/8b/927c8b18eb5b5536d6caa346e3a75b29.png" class="card-img-top" alt="Event Image">
+                    <div class="card-body">
+                        <h5 class="card-title">
                             @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Location)
-                        </td>
-                        <td>
+                        </h5>
+                        <p class="card-text">
+                            @Html.DisplayNameFor(model => model.Location) :
+                            <b>
+                                @Html.DisplayFor(modelItem => item.Location)
+                            </b>
+                        </p>
+                        <p class="card-text">
                             @Html.DisplayFor(modelItem => item.DateOfEvent)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AvailableSeats)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TicketPrice)
-                        </td>
-                        <td>
-                            <form asp-controller="TicketBooking" asp-action="BookTicket" method="get">
-                                <input type="hidden" name="userID" value="@Context.Session.GetInt32("UserID")" />
-                                <input type="hidden" name="eventID" value="@Html.DisplayFor(modelItem => item.ID)" />
-                                <input type="number" name="quantity" placeholder="How much?" required />
-                                <button type="submit" class="btn btn-primary">Book Tix</button>
-                            </form>
-                        </td>
-                    </tr>
-            }
+                        </p>
+                        <p class="card-text">
+                            @Html.DisplayFor(modelItem => item.AvailableSeats) seats available currently!
+                        </p>
+                        <p class="card-text">
+                            ₹ @Html.DisplayFor(modelItem => item.TicketPrice)
+                        </p>
+                        <form asp-controller="TicketBooking" asp-action="BookTicket" method="get">
+                            <input type="hidden" name="userID" value="@Context.Session.GetInt32("UserID")" />
+                            <input type="hidden" name="eventID" value="@Html.DisplayFor(modelItem => item.ID)" />
+                            <input type="number" name="quantity" placeholder="How much?" required />
+                            <button type="submit" class="btn btn-primary">Book Tix</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    background: #000;
 }
 
 @media (min-width: 768px) {
@@ -15,4 +16,34 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+footer {
+    display: flex;
+    height: auto;
+    justify-content: space-around;
+    background-color: #e3f2fd;
+}
+.form-box {
+    width: 50%;
+    margin: auto;
+    padding-top: 20px;
+}
+.form-box h1 {
+    text-align: center;
+    font-weight: lighter;
+    text-transform: uppercase;
+}
+.form-box h1 b {
+    padding: 5px;
+    border-radius: 16px;
+    font-family: 'Cascadia Mono';
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: #fff;
+    background-color: #fff;
+    color: #0047AB;
+}
+.card-title {
+    font-family: 'Cascadia Code';
 }
