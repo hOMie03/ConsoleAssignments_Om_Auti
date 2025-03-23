@@ -17,11 +17,11 @@
                 <span>@eventDetails.Name</span>
             </div>
             <div>
-                <label>Event Location: </label>
+                <label>Location: </label>
                 <span>@eventDetails.Location</span>
             </div>
             <div>
-                <label>Event Date: </label>
+                <label>Date of Event: </label>
                 <span>@eventDetails.DateOfEvent.ToString("MMMM dd, yyyy")</span>
             </div>
             <div>
@@ -50,19 +50,20 @@
                     <span asp-validation-for="Quantity" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="TotalCost" class="control-label"></label>
+                    <label asp-for="TotalCost" class="control-label">Total Bill</label>
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1">₹</span>
                         <input asp-for="TotalCost" class="form-control" aria-describedby="basic-addon1" readonly />
                     </div>
                     <span asp-validation-for="TotalCost" class="text-danger"></span>
                 </div>
+                <br />
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Let's book it!" class="btn btn-primary" />
                 </div>
             </form>
             <div>
-                <a asp-action="Index">Back to List</a>
+                <a asp-controller="Home" asp-action="Index">Back to Events Home</a>
             </div>
         </div>
     </div>

@@ -23,6 +23,11 @@ namespace TicketTango.Controllers
         {
             return View();
         }
+        public IActionResult PaymentMethod()
+        {
+            TempData.Keep();
+            return View();
+        }
 
         public async Task<IActionResult> BookTicket(BookingViewModel model, int eventID, int quantity)
         {
@@ -49,7 +54,7 @@ namespace TicketTango.Controllers
             if (result > 0)
             {
                 TempData["message"] = "Ticket has been booked successfully!";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("PaymentMethod");
             }
             else
             {

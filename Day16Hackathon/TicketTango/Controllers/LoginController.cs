@@ -36,7 +36,9 @@ namespace TicketTango.Controllers
             {
                 HttpContext.Session.SetInt32("UserID", loginCheck.ID);
                 HttpContext.Session.SetString("UserRole",(string) loginCheck.Roles.ToString());
-                return Redirect("Home/Index");
+                if (HttpContext.Session.GetString("UserRole") == "Admin")
+                    return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Index", "Home");
             }
             else
             {

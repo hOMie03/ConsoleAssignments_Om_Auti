@@ -14,12 +14,12 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
+                    <input asp-for="Name" placeholder="John Doe" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Location" class="control-label"></label>
-                    <input asp-for="Location" class="form-control" />
+                    <input asp-for="Location" placeholder="Stadium/Location Name, City, Country" class="form-control" />
                     <span asp-validation-for="Location" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -36,9 +36,19 @@
                     <label asp-for="TicketPrice" class="control-label">Ticket Price</label>
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1">₹</span>
-                        <input asp-for="TicketPrice" class="form-control" aria-describedby="basic-addon1"  />
+                        <input asp-for="TicketPrice" class="form-control" placeholder="Price Per Tix" aria-describedby="basic-addon1"  />
                     </div>
                     <span asp-validation-for="TicketPrice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PosterLink" class="control-label">Poster Link</label>
+                    <input asp-for="PosterLink" class="form-control" placeholder="https://imgsource.com/image.jpg" />
+                    <span asp-validation-for="PosterLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LocationLink" class="control-label">Location Link (Google Maps link)</label>
+                    <input asp-for="LocationLink" class="form-control" placeholder="https://maps.app.goo.gl/xyz" />
+                    <span asp-validation-for="LocationLink" class="text-danger"></span>
                 </div>
                 <br />
                 <div class="form-group">

@@ -6,8 +6,9 @@
 
 <div class="text-white">
     <h1>Event Details</h1>
-
+    <hr />
     <div>
+        <div class="text-center"><img src="@Model.PosterLink" class="img-thumbnail" width="50%" /></div>
         <hr />
         <dl class="row">
             <dt class = "col-sm-2">
@@ -38,7 +39,14 @@
                 @Html.DisplayNameFor(model => model.TicketPrice)
             </dt>
             <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.TicketPrice)
+                ₹ @Html.DisplayFor(model => model.TicketPrice)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LocationLink)
+            </dt>
+            <dd class="col-sm-10">
+                <a href="@Html.DisplayFor(model => model.LocationLink)">Go to Location</a>
+                <iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=@(Model.Location)&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
             </dd>
         </dl>
     </div>

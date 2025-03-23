@@ -2,7 +2,13 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-<h2>Welcome Admin!</h2>
-<h3>@TempData["promotionMsg"]</h3>
+<div class="text-white">
+    <h1>Dashboard</h1>
+    <h2>Welcome Admin!</h2>
+    <h3>@TempData["promotionMsg"]</h3>
+    <ul>
+        <li><a asp-action="GetAllEvents" class="link-primary">Check All Active Users</a></li>
+        <li><a asp-action="GetAllUsers" class="link-info">Check All Events</a></li>
+        <li><a href="TicketBooking/GetBookingsByUserId?userID=1" class="link-success">Check your ticket status</a></li>
+    </ul>
+</div>

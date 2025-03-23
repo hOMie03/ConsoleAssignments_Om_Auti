@@ -1,0 +1,173 @@
+﻿@{
+    ViewData["Title"] = "PaymentMethod";
+}
+
+<div class="container py-5">
+    <!-- For demo purpose -->
+    <div class="row mb-4 text-white">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-6">Choose your Payment Method</h1>
+        </div>
+    </div>
+    <hr style="color: #fff;" />
+    <div class="row ">
+        <div class="col-lg-6 mx-auto">
+            <div class="card paym">
+                <!-- Card header -->
+                <div class="card-header">
+                    <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+                        <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+                            <li class="nav-item">
+                                <a data-bs-toggle="pill" role="tab" href="#credit-card" class="nav-link active">
+                                    <i class="fas fa-credit-card mr-2"></i> Credit Card
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-bs-toggle="pill" role="tab" href="#paypal" class="nav-link">
+                                    <i class="fab fa-google mr-2"></i> Google Pay
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-bs-toggle="pill" href="#net-banking" class="nav-link">
+                                    <i class="fas fa-mobile-alt mr-2"></i> Net Banking
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Credit card form content -->
+                <div class="tab-content">
+                    <!-- credit card info-->
+                    <div id="credit-card" class="tab-pane fade show active pt-3">
+                        <form role="form" onsubmit="event.preventDefault()">
+                            <div class="form-group">
+                                <label for="username">
+                                    <h6>Card Owner</h6>
+                                </label>
+                                <input type="text" name="username" placeholder="Card Owner Name" required class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="cardNumber">
+                                    <h6>Card number</h6>
+                                </label>
+                                <div class="input-group">
+                                    <input type="number" name="cardNumber" placeholder="Valid card number" class="form-control" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text text-muted">
+                                            <i class="fab fa-cc-visa mx-1"></i>
+                                            <i class="fab fa-cc-mastercard mx-1"></i>
+                                            <i class="fab fa-cc-amex mx-1"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label>
+                                            <span class="hidden-xs">
+                                                <h6>Expiration Date</h6>
+                                            </span>
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="month" placeholder="MM" name="" class="form-control" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-4">
+                                        <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
+                                            <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                                        </label>
+                                        <input type="password" maxlength="3" required class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a type="button" asp-controller="Home" asp-action="Index" class="subscribe btn btn-primary btn-block shadow-sm">Confirm Payment</a>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Google Pay info -->
+                    <div id="paypal" class="tab-pane fade pt-3">
+                        <h6 class="pb-2">Select your UPI ID</h6>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control ml-5" placeholder="UPI ID" aria-label="UPI ID" aria-describedby="basic-addon2">
+                                <span class="input-group-text" id="basic-addon2">@("@")</span>
+                                <select class="form-control" id="providers">
+                                    <option value="" selected disabled>--Select provider--</option>
+                                    <option>oksbi</option>
+                                    <option>okhdfc</option>
+                                    <option>okaxis</option>
+                                    <option>paytm</option>
+                                    <option>okidfc</option>
+                                    <option>okicici</option>
+                                    <option>okpnb</option>
+                                    <option>okcanara</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p>
+                            <a type="button" asp-controller="Home" asp-action="Index" class="btn btn-primary">
+                                <i class="fab fa-google mr-2"></i> Pay using UPI
+                            </a>
+                        </p>
+                        <p class="text-muted">
+                            Note: After clicking on the button, you will be directed to a secure gateway for payment.
+                            After completing the payment process, you will be redirected back to the website to view details of your order.
+                        </p>
+                    </div>
+
+                    <!-- Bank transfer info -->
+                    <div id="net-banking" class="tab-pane fade pt-3">
+                        <div class="form-group">
+                            <label for="Select Your Bank">
+                                <h6>Select your Bank</h6>
+                            </label>
+                            <select class="form-control" id="ccmonth">
+                                <option value="" selected disabled>--Please select your Bank--</option>
+                                <option>SBI Bank</option>
+                                <option>HDFC Bank</option>
+                                <option>Axis Bank</option>
+                                <option>IDFC First Bank</option>
+                                <option>ICICI Bank</option>
+                                <option>Abhyudaya Bank</option>
+                                <option>PnB Bank</option>
+                                <option>Bank of Baroda</option>
+                                <option>Mumbai Bank</option>
+                                <option>Canara Bank</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <p>
+                                <a type="button" asp-controller="Home" asp-action="Index" class="btn btn-primary">
+                                    <i class="fas fa-mobile-alt mr-2"></i> Proceed Payment
+                                </a>
+                            </p>
+                        </div>
+                        <p class="text-muted">
+                            Note: After clicking on the button, you will be directed to a secure gateway for payment.
+                            After completing the payment process, you will be redirected back to the website to view details of your order.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Bootstrap 5 tab functionality
+        var myTab = new bootstrap.Tab(document.querySelector('.nav-pills .nav-link.active'));
+
+        // Optional: Activate the first tab by default if needed
+        myTab.show();
+
+        // Enable tooltips (if used)
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+    </script>
+</div>

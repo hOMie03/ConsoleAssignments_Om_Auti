@@ -46,6 +46,14 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Status)
+                    @if(item.Status == true)
+                    {
+                        @("Booked")
+                    }
+                    else
+                    {
+                        @("Canceled")
+                    }
                 </td>
                 <td>
                     <a asp-action="CancelBooking" asp-route-id="@item.ID">Delete</a>

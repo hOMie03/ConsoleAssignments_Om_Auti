@@ -8,12 +8,12 @@
 <h2>@TempData["EventNotFound"]</h2>
 
 <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="row row-cols-1 row-cols-md-3 g-2">
         @foreach (var item in Model)
         {
             <div class="col">
-                <div class="card">
-                    <img src="https://i.pinimg.com/originals/92/7c/8b/927c8b18eb5b5536d6caa346e3a75b29.png" class="card-img-top" alt="Event Image">
+                <div class="card h-100">
+                    <img src="@item.PosterLink" class="card-img-top" alt="Event Image">
                     <div class="card-body">
                         <h5 class="card-title">
                             @Html.DisplayFor(modelItem => item.Name)
@@ -33,12 +33,24 @@
                         <p class="card-text">
                             ₹ @Html.DisplayFor(modelItem => item.TicketPrice)
                         </p>
-                        <form asp-controller="TicketBooking" asp-action="BookTicket" method="get">
-                            <input type="hidden" name="userID" value="@Context.Session.GetInt32("UserID")" />
-                            <input type="hidden" name="eventID" value="@Html.DisplayFor(modelItem => item.ID)" />
-                            <input type="number" name="quantity" placeholder="How much?" required />
-                            <button type="submit" class="btn btn-primary">Book Tix</button>
-                        </form>
+                        @if(item.DateOfEvent > DateTime.Now)
+                        {
+                            <form asp-controller="TicketBooking" asp-action="BookTicket" method="get">
+                                <input type="hidden" name="userID" value="@Context.Session.GetInt32("UserID")" />
+                                <input type="hidden" name="eventID" value="@Html.DisplayFor(modelItem => item.ID)" />
+                                <input type="number" name="quantity" placeholder="How much?" required />
+                                <button type="submit" class="btn btn-primary">Book Tix</button>
+                            </form>
+                            <button class="btn btn-outline-success">
+                                <a class="text-decoration-none text-black" asp-controller="Event" asp-action="GetEventByID" asp-route-id="@item.ID">
+                                    View more details
+                                </a>
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-primary" disabled>Event is done</button>
+                        }
                     </div>
                 </div>
             </div>

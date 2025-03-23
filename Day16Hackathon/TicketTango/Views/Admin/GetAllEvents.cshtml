@@ -4,12 +4,9 @@
     ViewData["Title"] = "GetAllEvents";
 }
 
-<div class="text-white">
+<div class="text-white text-center">
     <h1>All Events</h1>
-
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
+    <hr style="color: #fff;" />
     <table class="table text-white">
         <thead>
             <tr>
@@ -27,6 +24,9 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.TicketPrice)
+                </th>
+                <th>
+                    Status
                 </th>
                 <th></th>
             </tr>
@@ -50,9 +50,14 @@
                     @Html.DisplayFor(modelItem => item.TicketPrice)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    @if(item.DateOfEvent < DateTime.Now)
+                    {
+                        @Html.DisplayName("Completed")
+                    }
+                    else
+                    {
+                        @Html.DisplayName("Not Completed")
+                    }
                 </td>
             </tr>
     }

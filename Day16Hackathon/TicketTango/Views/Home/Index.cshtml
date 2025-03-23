@@ -5,8 +5,14 @@
 }
 <div class="text-white text-center">
     <h1>Amazin' Events Currently</h1>
-    <h2>@TempData["LogoutMsg"]</h2>
-    <h2>@TempData["message"]</h2>
+    @if (TempData["message"] != null || TempData["LogoutMsg"] != null)
+    {
+        <div class="alert alert-primary" role="alert">
+            <h4>@TempData["LogoutMsg"]</h4>
+            <h4>@TempData["message"]</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
     <hr style="color: white;" />
 </div>
 <div class="container">
@@ -14,41 +20,41 @@
         @foreach (var item in Model)
         {
             <div class="col">
-        <div class="card">
-                <img src="https://i.pinimg.com/originals/92/7c/8b/927c8b18eb5b5536d6caa346e3a75b29.png" class="card-img-top" alt="Event Image">
-            <div class="card-body">
-                <h3 class="card-title">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </h3>
-                <p class="card-text">
-                    @Html.DisplayNameFor(model => model.Location) :
-                    <b>
-                        @Html.DisplayFor(modelItem => item.Location)
-                    </b>
-                </p>
-                <p class="card-text">
-                    @Html.DisplayFor(modelItem => item.DateOfEvent)
-                </p>
-                <p class="card-text">
-                    @Html.DisplayFor(modelItem => item.AvailableSeats) seats available currently!
-                </p>
-                <h4 class="card-text">
-                    ₹ @Html.DisplayFor(modelItem => item.TicketPrice)
-                </h4>
-                <form asp-controller="TicketBooking" asp-action="BookTicket" method="get">
-                    <input type="hidden" name="userID" value="@Context.Session.GetInt32("UserID")" />
-                    <input type="hidden" name="eventID" value="@Html.DisplayFor(modelItem => item.ID)" />
-                    <input type="number" name="quantity" placeholder="How much?" required />
-                    <button type="submit" class="btn btn-primary">Book Tix</button>
-                </form>
-                    <button class="btn btn-outline-success">
-                        <a class="text-decoration-none text-black" asp-controller="Event" asp-action="GetEventByID" asp-route-id="@item.ID">
+                <div class="card h-100">
+                        <img src="@item.PosterLink" class="card-img-top" alt="Event Image">
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </h3>
+                        <p class="card-text">
+                            @Html.DisplayNameFor(model => model.Location) :
+                            <b>
+                                @Html.DisplayFor(modelItem => item.Location)
+                            </b>
+                        </p>
+                        <p class="card-text">
+                            @Html.DisplayFor(modelItem => item.DateOfEvent)
+                        </p>
+                        <p class="card-text">
+                            @Html.DisplayFor(modelItem => item.AvailableSeats) seats available currently!
+                        </p>
+                        <h4 class="card-text">
+                            ₹ @Html.DisplayFor(modelItem => item.TicketPrice)
+                        </h4>
+                        <form asp-controller="TicketBooking" asp-action="BookTicket" method="get">
+                            <input type="hidden" name="userID" value="@Context.Session.GetInt32("UserID")" />
+                            <input type="hidden" name="eventID" value="@Html.DisplayFor(modelItem => item.ID)" />
+                            <input type="number" name="quantity" placeholder="How much?" required />
+                            <button type="submit" class="btn btn-primary">Book Tix</button>
+                        </form>
+                        <button class="btn btn-outline-success">
+                            <a class="text-decoration-none text-black" asp-controller="Event" asp-action="GetEventByID" asp-route-id="@item.ID">
                                 View more details
-                        </a>
-                    </button>
+                            </a>
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
         }
     </div>
 </div>
