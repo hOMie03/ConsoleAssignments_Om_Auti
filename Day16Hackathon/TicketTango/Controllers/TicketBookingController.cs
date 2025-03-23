@@ -2,12 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using TicketTango.Filters;
 using TicketTango.Models;
 using TicketTango.Service;
 using TicketTango.ViewModels;
 
 namespace TicketTango.Controllers
 {
+    [ServiceFilter(typeof(ExceptionHandlerAttribute))]
     public class TicketBookingController : Controller
     {
         readonly IEventService _eventService;

@@ -12,7 +12,7 @@ using TicketTango.Context;
 namespace TicketTango.Migrations
 {
     [DbContext(typeof(TicketTangoDBContext))]
-    [Migration("20250319161107_initialMigration")]
+    [Migration("20250323072939_initialMigration")]
     partial class initialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,7 +42,15 @@ namespace TicketTango.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("LocationLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PosterLink")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

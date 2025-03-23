@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
 
 namespace TicketTango.Models
 {
@@ -23,6 +24,13 @@ namespace TicketTango.Models
 
         [AllowNull]
         public decimal TicketPrice { get; set; }
+
+        [AllowNull]
+        public string PosterLink { get; set; }
+        
+        [Required, NotNull]
+        public string LocationLink { get; set; }
+
         public ICollection<TicketBooking> TicketBookings { get; set; }
     }
 }

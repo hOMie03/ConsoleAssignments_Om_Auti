@@ -5,6 +5,7 @@ using TicketTango.Service;
 
 namespace TicketTango.Controllers
 {
+    [ServiceFilter(typeof(ExceptionHandlerAttribute))]
     public class EventController : Controller
     {
         readonly IEventService _eventService;
@@ -22,15 +23,15 @@ namespace TicketTango.Controllers
         //[ServiceFilter(typeof(userAuthorizeFilter))]
         public async Task<IActionResult> GetEventByID(int id)
         {
-            try
-            {
+            //try
+            //{
                 var eventResult = await _eventService.GetEventByIdAsync(id);
                 return View(eventResult);
-            }
-            catch (ApplicationException ex)
-            {
-                return Content(ex.Message);
-            }
+            //}
+            //catch (ApplicationException ex)
+            //{
+            //    return Content(ex.Message);
+            //}
         }
 
         [ServiceFilter(typeof(userAuthorizeFilter))]

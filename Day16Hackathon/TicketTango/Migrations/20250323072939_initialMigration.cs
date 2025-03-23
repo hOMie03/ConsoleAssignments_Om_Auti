@@ -19,7 +19,9 @@ namespace TicketTango.Migrations
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfEvent = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AvailableSeats = table.Column<int>(type: "int", nullable: false),
-                    TicketPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    TicketPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PosterLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LocationLink = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
