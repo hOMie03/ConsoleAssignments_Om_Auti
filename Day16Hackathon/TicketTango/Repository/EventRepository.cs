@@ -16,7 +16,7 @@ namespace TicketTango.Repository
         #endregion
         public async Task<IEnumerable<Event>> GetAllEventsAsync()
         {
-            return await _ttDBContext.Events.ToListAsync();
+            return await _ttDBContext.Events.OrderBy(o => o.DateOfEvent).ToListAsync();
         }
         public async Task<Event> GetEventByIdAsync(int id)
         {
@@ -54,7 +54,7 @@ namespace TicketTango.Repository
         }
         public async Task<IEnumerable<Event>> GetAllActiveEventsAsync()
         {
-            return await _ttDBContext.Events.Where(b => b.DateOfEvent > DateTime.Now).ToListAsync();
+            return await _ttDBContext.Events.Where(b => b.DateOfEvent > DateTime.Now).OrderBy(o => o.DateOfEvent).ToListAsync();
         }
     }
 }

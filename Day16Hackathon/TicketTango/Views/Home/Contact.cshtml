@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewData["Title"] = "Contact";
+}
+
+
+<div class="row text-white">
+    <div class="col-12">
+        <h1>Contact Us</h1>
+        <hr />
+        <h2 class="contact-title">Get in Touch</h2>
+    </div>
+    <div class="col-lg-8">
+        <form class="form contact-form" id="contactForm" novalidate="novalidate">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Enter Message"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-outline-primary">Send</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-3 offset-lg-1">
+        <div class="media contact-info">
+            <div class="media-body">
+                <h3><i class="fas fa-home"></i> Mumbai, India.</h3>
+                <br />
+            </div>
+        </div>
+        <div class="media contact-info">
+            <div class="media-body">
+                <h3><i class="fas fa-phone"></i> +91 99999 66666</h3>
+                <p>Mon-Fri, 9AM-6PM</p>
+            </div>
+        </div>
+        <div class="media contact-info">
+            <div class="media-body">
+                <h3><i class="fas fa-envelope"></i> support@tickettango.com</h3>
+                <p>Send us your query anytime!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-white text-center">
+    <hr style="color: #fff;" />
+    <h2>~ Our Partners ~</h2>
+    <marquee>
+        <a href="https://in.bookmyshow.com/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Bookmyshow-logoid.png" style="width: 200px; margin-right: 100px;" /></a>
+        <a href="https://www.district.in/" target="_blank"><img src="https://b.zmtcdn.com/nugget/c247c6901979b682dfdeb9601216c8341739526334.png" style="width: 200px; margin-right: 100px;" /></a>
+        <a href="https://paytm.com/movies" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Paytm_Logo.png" style="width: 200px; margin-right: 100px;" /></a>
+        <a href="https://pay.google.com/intl/en_in/about/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/1200px-Google_Pay_Logo.svg.png" style="width: 200px; margin-right: 100px;" /></a>
+    </marquee>
+</div>

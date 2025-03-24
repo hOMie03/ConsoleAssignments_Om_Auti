@@ -45,7 +45,7 @@
                 @Html.DisplayNameFor(model => model.LocationLink)
             </dt>
             <dd class="col-sm-10">
-                <a href="@Html.DisplayFor(model => model.LocationLink)">Go to Location</a>
+                <a href="@Html.DisplayFor(model => model.LocationLink)" target="_blank">Go to Location</a>
                 <iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=@(Model.Location)&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
             </dd>
         </dl>

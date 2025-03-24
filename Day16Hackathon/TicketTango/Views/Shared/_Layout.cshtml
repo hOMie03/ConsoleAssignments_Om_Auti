@@ -23,27 +23,7 @@
                         <partial name="_SearchEvent" />
                     </ul>
                     <ul class="navbar-nav">
-                        @if (Context.Session.GetInt32("UserID") == null)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Register" asp-action="Index">Register</a>
-                            </li>
-                        }
-                        else
-                        {
-                            ViewBag.UID = Context.Session.GetInt32("UserID");
-                            <form asp-controller="TicketBooking" asp-action="GetBookingsByUserId" method="get">
-                                <input type="hidden" name="userID" value="@ViewBag.UID" />
-                                <button type="submit" class="btn btn-primary">Your Tix</button>
-                            </form>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
-                            </li>
-                        }
-                        @if(Context.Session.GetString("UserRole") == "Admin")
+                        @if (Context.Session.GetString("UserRole") == "Admin")
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Dashboard</a>
@@ -62,6 +42,26 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="AddEvent">Add New Event</a>
+                            </li>
+                        }
+                        @if (Context.Session.GetInt32("UserID") == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Register" asp-action="Index">Register</a>
+                            </li>
+                        }
+                        else
+                        {
+                            ViewBag.UID = Context.Session.GetInt32("UserID");
+                            <form asp-controller="TicketBooking" asp-action="GetBookingsByUserId" method="get">
+                                <input type="hidden" name="userID" value="@ViewBag.UID" />
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-ticket-alt"></i> Your Tix</button>
+                            </form>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout"><i class="fas fa-user-circle"></i> Logout</a>
                             </li>
                         }
                     </ul>
@@ -85,18 +85,20 @@
             <div class="row">
                 <div class="col-md-4">
                     <br />
-                    <img src="~/img/TT-logo-no-bg.png" width="200" />
-                    <h3>TicketTango</h3>
-                    <p>About</p>
-                    <p>Phone</p>
-                    <p>Email</p>
+                    <a asp-controller="Home" asp-action="Index"><img src="~/img/TT-logo-no-bg.png" width="135" /></a>
+                    <hr />
+                    <p><a class="text-decoration-none text-black" asp-controller="Home" asp-action="Contact">Contact Us</a></p>
+                    <p><a class="text-decoration-none text-black" href="tel:+919999966666">Phone</a></p>
+                    <p><a class="text-decoration-none text-black" href="mailto:support@tickettango.com">Email</a></p>
                 </div>
                 <div class="col-md-4">
                     <br />
                     <h3>Follow Us</h3>
-                    <p>Facebook</p>
-                    <p>Twitter</p>
-                    <p>Instagram</p>
+                    <hr />
+                    <p><i class="fab fa-facebook"></i> Facebook</p>
+                    <p><i class="fab fa-twitter"></i> Twitter</p>
+                    <p><i class="fab fa-instagram"></i> Instagram</p>
+                    <p><i class="fab fa-mastodon"></i> Mastadon</p>
                 </div>
             </div>
         </div>

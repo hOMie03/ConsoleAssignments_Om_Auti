@@ -21,8 +21,12 @@ body {
 footer {
     display: flex;
     height: auto;
+    margin-bottom: -100px;
     justify-content: space-around;
     background-color: #e3f2fd;
+}
+.footer-layout {
+
 }
 .form-box {
     width: 50%;
@@ -72,4 +76,14 @@ input[type="radio"] {
     padding: 20px;
     border: 2px solid blue;
     background-color: #fff;
+}
+
+.contact-form input, .contact-form textarea {
+    background: none;
+    padding: 10px;
+    color: white;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+    background: none;
+    color: white;
 }

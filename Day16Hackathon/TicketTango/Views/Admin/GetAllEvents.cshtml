@@ -7,60 +7,62 @@
 <div class="text-white text-center">
     <h1>All Events</h1>
     <hr style="color: #fff;" />
-    <table class="table text-white">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Location)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateOfEvent)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AvailableSeats)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TicketPrice)
-                </th>
-                <th>
-                    Status
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Location)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateOfEvent)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AvailableSeats)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TicketPrice)
-                </td>
-                <td>
-                    @if(item.DateOfEvent < DateTime.Now)
-                    {
-                        @Html.DisplayName("Completed")
-                    }
-                    else
-                    {
-                        @Html.DisplayName("Not Completed")
-                    }
-                </td>
-            </tr>
-    }
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table text-white">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Location)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateOfEvent)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AvailableSeats)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TicketPrice)
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfEvent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AvailableSeats)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketPrice)
+                    </td>
+                    <td>
+                        @if(item.DateOfEvent < DateTime.Now)
+                        {
+                            @Html.DisplayName("Completed")
+                        }
+                        else
+                        {
+                            @Html.DisplayName("Not Completed")
+                        }
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
 </div>
