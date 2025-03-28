@@ -30,5 +30,7 @@ namespace PPB.Domain.Models
         
         [Required, NotNull]
         public DateTime CreatedDate { get; set; }
+
+        //public ICollection<Transaction> Transactions { get; set; }
     }
 }

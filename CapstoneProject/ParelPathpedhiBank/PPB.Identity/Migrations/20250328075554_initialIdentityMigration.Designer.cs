@@ -12,7 +12,7 @@ using PPB.Identity.Context;
 namespace PPB.Identity.Migrations
 {
     [DbContext(typeof(PPBDBIdentityContext))]
-    [Migration("20250328054305_initialIdentityMigration")]
+    [Migration("20250328075554_initialIdentityMigration")]
     partial class initialIdentityMigration
     {
         /// <inheritdoc />
@@ -284,14 +284,14 @@ namespace PPB.Identity.Migrations
                         {
                             Id = "41776008 - 6086 - 1a1b - b923 - 2879a6680b9a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d1fda6ad-2f84-4e89-a0b9-435144d62942",
+                            ConcurrencyStamp = "a12e85bd-5526-4b13-a500-ca64df2459ac",
                             Email = "om@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "OM@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENP3cja+SQy1NNTRy2/RUTiaTpKrhb3wH56IrV4EzjE5nNEmCI4WsADHymHtwBBeJQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEfDAlX1XRZf6ncNdAUqtr2XPV/FHJ/fIkUHL+aRR8T+N4RJvsmtXZ+P+EfUHeHhvQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ae0877f2-ca97-4395-9667-cfdfd2a27156",
+                            SecurityStamp = "1bd29ff7-1ff4-4e84-9a9f-e1191b2f51e4",
                             TwoFactorEnabled = false,
                             Name = "Om"
                         },
@@ -299,14 +299,14 @@ namespace PPB.Identity.Migrations
                         {
                             Id = "41776008 - 6086 - 1bcd - b923 - 2879a6680b9a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0bd378f6-548a-4119-b204-e3424521a148",
+                            ConcurrencyStamp = "7896ba6f-7f78-448d-97b2-b031abda9a4e",
                             Email = "sakthish@hotmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SAKTHISH@HOTMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKzPB2FIBYMeH1w2rtAte05YHJce4Fh3s/1tMmWxsiN/VHgmu9vjhxqnIdy1OaY/Tw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPE8hUGNPs4rcn8AIZ+KG8Cs+vThkhG+5qBiphm7t3R//XQmOSMwUBC+amOY/8Z30g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6f1f7572-f882-41f9-869c-5260711c0fc8",
+                            SecurityStamp = "2d50131f-ac5a-453d-8862-4749a4fd2f2a",
                             TwoFactorEnabled = false,
                             Name = "Sakthish Nadar"
                         },
@@ -314,14 +314,14 @@ namespace PPB.Identity.Migrations
                         {
                             Id = "41776008 - 6086 - 1f2e - b923 - 2879a6680b9a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "62844091-56a0-4427-965a-14d874874cf5",
+                            ConcurrencyStamp = "0c4fc174-aaff-4b03-9f47-41f2083059ec",
                             Email = "shreek@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SHREEK@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHQlJbolz5rv6tvl9pbqnkh7gm+WGYK4aozYYHVo6wI/zmWu/CUPz66PMC0o0rtQFQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFj7QjaM9uuzO1rnBnLP+1u50fpeB+XHkgc0IAxWNen0zHFA2Yh7B5rjWNVppkOj/A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "968de9df-5b51-4eb0-93d7-c658779857e2",
+                            SecurityStamp = "032ebd52-f536-4c64-8e2e-8610f8d521b7",
                             TwoFactorEnabled = false,
                             Name = "Shreekant"
                         });

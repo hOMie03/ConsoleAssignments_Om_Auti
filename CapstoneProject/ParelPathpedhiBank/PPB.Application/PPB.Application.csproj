@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Features\AccountFeature\Command\" />
-    <Folder Include="Features\AccountFeature\Query\GetAccountsByUserID\" />
     <Folder Include="Features\TransactionFeature\Command\" />
     <Folder Include="Features\TransactionFeature\Query\GetAllTransactions\" />
     <Folder Include="Features\TransactionFeature\Query\GetTransactionsByAccID\" />

@@ -12,7 +12,7 @@ using PPB.Infrastructure.Context;
 namespace PPB.Infrastructure.Migrations
 {
     [DbContext(typeof(PPBDBContext))]
-    [Migration("20250328054827_initialMigration")]
+    [Migration("20250328075623_initialMigration")]
     partial class initialMigration
     {
         /// <inheritdoc />

@@ -21,5 +21,9 @@ namespace PPB.Infrastructure.Repository
         {
             return await _ppbDBContext.Accounts.ToListAsync();
         }
+        public async Task<IEnumerable<Account>> GetAccountsByUserID(string userID)
+        {
+            return await _ppbDBContext.Accounts.Where(a => a.UserID == userID).ToListAsync();
+        }
     }
 }
