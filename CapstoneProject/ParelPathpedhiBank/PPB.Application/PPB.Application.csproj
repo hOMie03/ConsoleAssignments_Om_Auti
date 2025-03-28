@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\AccountFeature\Command\" />
+    <Folder Include="Features\AccountFeature\Query\GetAccountsByUserID\" />
+    <Folder Include="Features\TransactionFeature\Command\" />
+    <Folder Include="Features\TransactionFeature\Query\GetAllTransactions\" />
+    <Folder Include="Features\TransactionFeature\Query\GetTransactionsByAccID\" />
+    <Folder Include="Interfaces\Identity\" />
+    <Folder Include="Models\Identity\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PPB.Domain\PPB.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
