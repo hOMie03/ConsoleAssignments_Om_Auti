@@ -20,6 +20,9 @@ namespace PPB.Infrastructure.Context
         {
             modelBuilder.ApplyConfiguration(new AccountConfiguration());
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
+
+            //modelBuilder.Entity("AspNetUsers").HasMany("Accounts");
+            //modelBuilder.Entity("Accounts").HasMany("Transactions");
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<Account> Accounts { get; set; }

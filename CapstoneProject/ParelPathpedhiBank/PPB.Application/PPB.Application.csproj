@@ -9,8 +9,6 @@
   <ItemGroup>
     <Folder Include="Features\AccountFeature\Command\" />
     <Folder Include="Features\TransactionFeature\Command\" />
-    <Folder Include="Features\TransactionFeature\Query\GetAllTransactions\" />
-    <Folder Include="Features\TransactionFeature\Query\GetTransactionsByAccID\" />
     <Folder Include="Interfaces\Identity\" />
     <Folder Include="Models\Identity\" />
   </ItemGroup>

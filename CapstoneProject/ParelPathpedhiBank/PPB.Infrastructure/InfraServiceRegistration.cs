@@ -18,6 +18,7 @@ namespace PPB.Infrastructure
         {
             services.AddDbContext<PPBDBContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("PPBDBConnString")));
             services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
             return services;
         }
     }
