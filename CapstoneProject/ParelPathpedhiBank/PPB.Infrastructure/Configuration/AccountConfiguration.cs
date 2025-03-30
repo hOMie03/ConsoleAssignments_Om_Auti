@@ -28,7 +28,7 @@ namespace PPB.Infrastructure.Configuration
                 {
                     Id = 2,
                     UserID = "41776008 - 6086 - 1bcd - b923 - 2879a6680b9a",
-                    AccountNumber = 12345678,
+                    AccountNumber = 87654321,
                     Balance = 20000,
                     AccountType = AccountTypes.Savings,
                     CreatedDate = new DateTime(2025, 01, 10)

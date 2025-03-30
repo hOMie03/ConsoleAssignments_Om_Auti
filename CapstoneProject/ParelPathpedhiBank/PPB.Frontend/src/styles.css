@@ -288,20 +288,22 @@ p {
     width: 100% !important;
     max-width: 100% !important;
     /* to counter container max-width for md+ screens*/
+  }
+  #articles-holder {
     overflow-x: auto !important;
     white-space: nowrap !important;
   }
-
   .article-card {
     padding-left: 0 !important;
     padding-right: 0 !important;
     padding-bottom: 5% !important;
     margin-top: 10% !important;
     margin-bottom: 10% !important;
-    width: 90%;
+    width: 40%;
     background-color: white !important;
     margin: 7% 5px 7% 5px !important;
     cursor: default !important;
+    text-wrap: wrap;
   }
   .article-card h5 {
     font-size: 1.12rem !important;
