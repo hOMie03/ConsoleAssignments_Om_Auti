@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Middleware\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\PPB.Application\PPB.Application.csproj" />
     <ProjectReference Include="..\PPB.Identity\PPB.Identity.csproj" />
     <ProjectReference Include="..\PPB.Infrastructure\PPB.Infrastructure.csproj" />

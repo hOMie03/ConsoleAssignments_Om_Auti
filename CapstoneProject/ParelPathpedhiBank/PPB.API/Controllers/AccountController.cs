@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PPB.Application.Features.AccountFeature.Query.GetAccountsByUserID;
@@ -6,6 +7,7 @@ using PPB.Application.Features.AccountFeature.Query.GetAllAccounts;
 
 namespace PPB.API.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase

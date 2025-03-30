@@ -1,0 +1,17 @@
+<div class="login-Layout">
+    <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="text" class="form-control" id="email" required #email="ngModel"
+          name="email"[(ngModel)]=loginModel.email>
+          <span *ngIf="email.invalid && email.touched"style="color:red">Email is required</span>
+      </div>
+      <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" required #password="ngModel"
+            name="password"[(ngModel)]=loginModel.password>
+            <span *ngIf="password.invalid && password.touched"style="color:red">Password is required</span>
+      </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
