@@ -5,11 +5,18 @@ import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
+import { AHeaderComponent } from './components/admin/header/header.component';
+import { HomeboardComponent } from './components/user/homeboard/homeboard.component';
+import { CalendarComponent } from './components/admin/calendar/calendar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, HomeComponent, LoginComponent, RegisterComponent, FooterComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent,
+            HomeComponent, LoginComponent, RegisterComponent,
+            AHeaderComponent, DashboardComponent, CalendarComponent,
+            HomeboardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -45,7 +45,7 @@ namespace PPB.Identity.Service
             }
             else
             {
-                var errorResult = registration.Errors.Select(e => e.Description).ToList();
+                var errorResult = string.Join(", ", registration.Errors.Select(e => e.Description));
                 throw new BadRequestException($"{errorResult}");
             }
         }

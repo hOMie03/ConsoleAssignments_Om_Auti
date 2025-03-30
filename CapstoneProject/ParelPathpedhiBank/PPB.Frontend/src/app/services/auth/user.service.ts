@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthResponseModel, Login } from '../../models/auth/login';
 import { Observable } from 'rxjs';
+import { Register, RegistrationResponseModel } from '../../models/auth/register';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,11 @@ export class UserService {
   
   constructor(private http:HttpClient) { }
 
-  login(loginData:Login):Observable<AuthResponseModel>{
+  login(loginData:Login):Observable<AuthResponseModel> {
     return this.http.post<AuthResponseModel>(`${this.apiUrl}/login`,loginData);
+  }
+
+  register(user:Register):Observable<RegistrationResponseModel> {
+    return this.http.post<RegistrationResponseModel>(`${this.apiUrl}/register`,user);
   }
 }

@@ -1,1 +1,26 @@
-<p>register works!</p>
+<div class="register-Layout">
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm)">
+        <div class="formGroup">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name" />
+            <div class="error" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+                Name is required!
+            </div>
+        </div>
+        <div class="formGroup">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" formControlName="email" />
+            <div class="error" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+                Email is required!
+            </div>
+        </div>
+        <div class="formGroup">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password" />
+            <div class="error" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+                Password is required!
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
