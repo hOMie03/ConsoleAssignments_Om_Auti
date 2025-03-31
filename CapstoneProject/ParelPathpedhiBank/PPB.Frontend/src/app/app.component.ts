@@ -10,6 +10,7 @@ import { AHeaderComponent } from './components/admin/header/header.component';
 import { HomeboardComponent } from './components/user/homeboard/homeboard.component';
 import { CalendarComponent } from './components/admin/calendar/calendar.component';
 import { LogoutComponent } from './components/auth/logout/logout.component';
+import { AddNewAccountComponent } from './components/user/add-new-account/add-new-account.component';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ import { LogoutComponent } from './components/auth/logout/logout.component';
   imports: [RouterOutlet, HeaderComponent, FooterComponent,
             HomeComponent, LoginComponent, RegisterComponent, LogoutComponent,
             AHeaderComponent, DashboardComponent, CalendarComponent,
-            HomeboardComponent],
+            HomeboardComponent,
+            AddNewAccountComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -7,6 +7,7 @@ import { AHeaderComponent } from './components/admin/header/header.component';
 import { HomeboardComponent } from './components/user/homeboard/homeboard.component';
 import { CalendarComponent } from './components/admin/calendar/calendar.component';
 import { LogoutComponent } from './components/auth/logout/logout.component';
+import { AddNewAccountComponent } from './components/user/add-new-account/add-new-account.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -16,4 +17,5 @@ export const routes: Routes = [
     {path: 'admin/dashboard', component: AHeaderComponent},
     {path: 'admin/dashboard/calendar', component: CalendarComponent},
     {path: 'user/homeboard', component: HomeboardComponent},
+    {path: 'user/account/addAccount', component: AddNewAccountComponent},
 ];

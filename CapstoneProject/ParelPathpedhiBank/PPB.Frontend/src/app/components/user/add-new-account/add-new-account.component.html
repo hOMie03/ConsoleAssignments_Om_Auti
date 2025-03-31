@@ -1,0 +1,44 @@
+<div id="wrapper">
+    <nav class="navbar navbar-light bg-faded">
+        <div class="sidebar" role="navigation">
+            <ul class="nav flex-column" id="side-menu">
+              <li class="nav-item">
+                <a routerLink="/user/homeboard"><i class="fas fa-columns"></i> Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a href="#"><i class="fas fa-history"></i> Transaction History</a>
+              </li>
+    
+              <li class="nav-item" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  <a href="#" class="active"><i class="fas fa-file-invoice"></i> &nbsp; <i class="fas fa-chevron-right"></i> Accounts </a>
+              </li>
+              <ul class="collapse nav-second-level" id="collapseExample">
+                  <li class="nav-item">
+                    <a class="active" routerLink="/user/account/addAccount">Add New Account</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#">Your Accounts (Accounts' Balance)</a>
+                  </li>
+              </ul>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <div id="content">
+        <h1>Add New Account</h1>
+        <div class="input-group mb-3">
+            <input type="text" [(ngModel)]="newAccount.userID" placeholder="Enter Id" class="form-control"aria-describedby="basic-addon2" />
+            <span class="input-group-text" id="basic-addon2">User ID</span>
+        </div>
+        <div class="input-group mb-3">
+            <input type="number" [(ngModel)]="newAccount.balance" placeholder="Enter Initial Balance" class="form-control" aria-describedby="basic-addon2" />
+            <span class="input-group-text" id="basic-addon2">Balance</span>
+        </div>
+        <div class="input-group mb-3">
+            <input type="number" [(ngModel)]="newAccount.accountType" placeholder="Enter Account Type" class="form-control" aria-describedby="basic-addon2" />
+            <span class="input-group-text" id="basic-addon2">Account Type (1,2,3)</span>
+        </div>
+        <input type="datetime-local" id="nowDate" [(ngModel)]="newAccount.createdDate" />
+        <button class="btn btn-primary" (click)="addAccount()">Add New Account</button>
+    </div>
+</div>

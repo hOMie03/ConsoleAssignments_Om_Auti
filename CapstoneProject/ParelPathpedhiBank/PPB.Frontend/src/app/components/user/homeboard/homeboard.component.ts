@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-homeboard',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './homeboard.component.html',
   styleUrl: './homeboard.component.css'
 })
