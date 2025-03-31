@@ -34,7 +34,7 @@ export class AddNewAccountComponent implements OnInit {
   // }
   addAccount():void{
     this.accountService.addAccount(this.newAccount).subscribe(res=>{
-      console.log(res);
+      console.log("Successful adding in DB", res);
       this.accounts?.push(res);
     })
   }
