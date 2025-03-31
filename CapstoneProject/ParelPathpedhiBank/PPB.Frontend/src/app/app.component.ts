@@ -9,12 +9,13 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { AHeaderComponent } from './components/admin/header/header.component';
 import { HomeboardComponent } from './components/user/homeboard/homeboard.component';
 import { CalendarComponent } from './components/admin/calendar/calendar.component';
+import { LogoutComponent } from './components/auth/logout/logout.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent,
-            HomeComponent, LoginComponent, RegisterComponent,
+            HomeComponent, LoginComponent, RegisterComponent, LogoutComponent,
             AHeaderComponent, DashboardComponent, CalendarComponent,
             HomeboardComponent],
   templateUrl: './app.component.html',

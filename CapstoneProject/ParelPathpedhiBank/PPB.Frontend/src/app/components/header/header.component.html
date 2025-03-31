@@ -12,7 +12,7 @@
             <a class="nav-link active" routerLink="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#articles">Articles</a>
+            <a class="nav-link" href="#articles">Articles</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact Us</a>
@@ -20,13 +20,24 @@
           &nbsp;
         </ul>
         <ul class="navbar-nav login-nav">
-          <li class="nav-item">
-            <button id="auth-btn" class="btn btn-lg rounded-pill text-white bg-green-cyan font-weight-bold" routerLink="/auth/login">Login</button>
-          </li>
-          &nbsp;
-          <li class="nav-item">
-            <button id="auth-btn" type="button" class="btn btn-lg rounded-pill text-white bg-green-cyan font-weight-bold" routerLink="/auth/register">Register</button>
-          </li>
+          @if(userID == null) {
+            <li class="nav-item">
+              <button id="auth-btn" class="btn btn-lg rounded-pill text-white bg-green-cyan font-weight-bold" routerLink="/auth/login">Login</button>
+            </li>
+            &nbsp;
+            <li class="nav-item">
+              <button id="auth-btn" type="button" class="btn btn-lg rounded-pill text-white bg-green-cyan font-weight-bold" routerLink="/auth/register">Register</button>
+            </li>
+          }
+          @if(userID != null) {
+            <li class="nav-item">
+              <button id="auth-btn" type="button" class="btn btn-lg rounded-pill text-white bg-green-cyan font-weight-bold" routerLink="/auth/logout">Logout</button>
+            </li>
+            &nbsp;
+            <li class="nav-item">
+              <button id="auth-btn" type="button" class="btn btn-lg rounded-pill text-white bg-green-cyan font-weight-bold" routerLink="/admin/dashboard">Dashboard</button>
+            </li>
+          }
         </ul>
       </div>
     </nav>

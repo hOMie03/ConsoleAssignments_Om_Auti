@@ -6,11 +6,13 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { AHeaderComponent } from './components/admin/header/header.component';
 import { HomeboardComponent } from './components/user/homeboard/homeboard.component';
 import { CalendarComponent } from './components/admin/calendar/calendar.component';
+import { LogoutComponent } from './components/auth/logout/logout.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'auth/login', component: LoginComponent},
     {path: 'auth/register', component: RegisterComponent},
+    {path: 'auth/logout', component: LogoutComponent},
     {path: 'admin/dashboard', component: AHeaderComponent},
     {path: 'admin/dashboard/calendar', component: CalendarComponent},
     {path: 'user/homeboard', component: HomeboardComponent},

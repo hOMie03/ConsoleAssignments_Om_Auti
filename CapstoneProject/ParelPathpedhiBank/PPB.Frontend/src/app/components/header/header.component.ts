@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Session } from 'inspector';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  userID: string | null = null;
 
+  ngOnInit(): void {
+    // Fetch the userID from sessionStorage
+    if (typeof window !== 'undefined' && window.sessionStorage) {
+      this.userID = sessionStorage.getItem('userID');
+    }
+  }
 }

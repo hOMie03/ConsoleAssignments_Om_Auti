@@ -6,6 +6,9 @@ body {
   color: #2d314d !important;
 }
 
+.heady {
+  font-size: 200%;
+}
 p {
   cursor: default !important;
 }
@@ -108,6 +111,9 @@ p {
   outline: none !important;
 }
 
+.active {
+  border-bottom: 4px solid #31d35c !important;
+}
 .nav-link:active {
   border-bottom: 4px solid #31d35c !important;
 }
@@ -215,7 +221,7 @@ p {
 
 /* Choose PPB */
 @media only screen and (min-width: 320px) and (max-width: 767.98px) {
-  #choose-easybank {
+  #choose-ppb {
     background-color: #f3f4f6 !important;
   }
 
@@ -224,7 +230,7 @@ p {
   }
 }
 @media only screen and (min-width: 768px) {
-  #choose-easybank {
+  #choose-ppb {
     background-color: #f3f4f6 !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -413,12 +419,12 @@ footer a {
   
 }
 @media only screen and (min-width: 992px) and (max-width: 1199.98px) {
-  .mt-md-custom-easybank{
+  .mt-md-custom-ppb{
     margin-top: -13% !important; 
   }
 }
 @media only screen and (min-width: 1200px) and (max-width: 1549.98px) {
-  .mt-md-custom-easybank{
+  .mt-md-custom-ppb{
     margin-top: -10% !important; 
   }
   #business-tagline {
@@ -427,7 +433,7 @@ footer a {
 }
 
 @media only screen and (min-width: 1550px) {
-  .mt-md-custom-easybank{
+  .mt-md-custom-ppb{
     margin-top: -8% !important; 
   }
   #business-tagline {
