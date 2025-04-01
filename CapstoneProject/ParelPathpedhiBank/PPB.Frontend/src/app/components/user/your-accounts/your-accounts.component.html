@@ -6,7 +6,7 @@
               <a routerLink="/user/homeboard"><i class="fas fa-columns"></i> Dashboard</a>
             </li>
             <li class="nav-item">
-              <a href="#"><i class="fas fa-history"></i> Transaction History</a>
+              <a routerLink="/user/account/transactionHistory"><i class="fas fa-history"></i> Transaction History</a>
             </li>
   
             <li class="nav-item" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -25,6 +25,7 @@
   </nav>
   <br>
   <div class="accounts-container mt-4  justify-content-center">
+    <h1>Your Accounts</h1><br>
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -57,7 +58,7 @@
                 }
                 <td>{{account.createdDate}}</td>
                 <td>
-                    <!-- <button type="button" class="btn btn-primary" (click)="updateAccount(account)">Update</button> -->
+                    <button type="button" class="btn btn-danger" (click)="deleteAccount(account.accountNumber)">Delete</button>
                 </td>
               </tr>
         }

@@ -17,4 +17,9 @@ export class RouterService {
   goToAdminDashboard() {
     this.router.navigate(['/admin/dashboard']);
   }
+
+  // After deleting
+  goToUserDashboard() {
+    this.router.navigate(['/user/homeboard']);
+  }
 }

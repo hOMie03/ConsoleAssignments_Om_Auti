@@ -18,7 +18,7 @@ namespace PPB.Application.Features.AccountFeature.Command.DeleteAccount
         }
         public Task<bool> Handle(DeleteAccountCommand request, CancellationToken cancellationToken)
         {
-            var deletingAcc = _accountRepository.DeleteAccountAsync(request.userID, request.accID);
+            var deletingAcc = _accountRepository.DeleteAccountAsync(request.userID, request.accNo);
             return deletingAcc;
         }
     }

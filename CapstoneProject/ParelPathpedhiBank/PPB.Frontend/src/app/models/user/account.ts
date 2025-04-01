@@ -5,6 +5,7 @@ export class Account {
     createdDate?:Date;
 }
 export class DisplayAccount {
+    id?:number;
     userID?:string;
     accountNumber?:string;
     balance?:number;

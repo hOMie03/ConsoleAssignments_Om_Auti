@@ -50,13 +50,13 @@ namespace PPB.API.Controllers
             //}
             //return BadRequest();
         }
-        [HttpPost("DeleteAccount")]
-        public async Task<IActionResult> DeleteAccountAsync(string userID, int accID)
+        [HttpDelete("DeleteAccount")]
+        public async Task<IActionResult> DeleteAccountAsync(string userID, int accNo)
         {
-            var deletingAcc = await _mediator.Send(new DeleteAccountCommand(userID, accID));
+            var deletingAcc = await _mediator.Send(new DeleteAccountCommand(userID, accNo));
             return Ok(deletingAcc);
         }
-        [HttpPost("UpdateAccount")]
+        [HttpPut("UpdateAccount")]
         public async Task<IActionResult> UpdateAccountAsync(int id, UpdateAccountDTO account)
         {
             var updatingAcc = await _mediator.Send(new UpdateAccountCommand(id, account));

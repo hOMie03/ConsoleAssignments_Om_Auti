@@ -27,24 +27,36 @@ namespace PPB.Infrastructure.Repository
         }
         public async Task<IEnumerable<Transaction>> GetTransactionsByAccID(int accID)
         {
+            //var receiverAcc = await _ppbDBContext.Transactions.Where(t => t.Description.Substring(0, t.Description.IndexOf(' ') > 0 ? t.Description.IndexOf(' ') : t.Description.Length) == accID.ToString()).ToListAsync();
             return await _ppbDBContext.Transactions.Where(t => t.AccountID == accID).ToListAsync();
         }
         public async Task<TransactionDTO> AddTransactionAsync(TransactionDTO transaction)
         {
             var findAccID = await _ppbDBContext.Accounts.FirstOrDefaultAsync(a => a.Id == transaction.AccountID);
+            var firstDescWord = transaction.Description.Split(' ').FirstOrDefault();
+            var receiverAccount = await _ppbDBContext.Accounts.FirstOrDefaultAsync(a => a.AccountNumber == Convert.ToInt32(firstDescWord));
             if(findAccID != null)
             {
-                var newTransaction = new Transaction()
+                var sendersTransaction = new Transaction()
                 {
                     AccountID = transaction.AccountID,
-                    TType = transaction.TType,
+                    TType = TransactionTypes.Debit,
                     Amount = transaction.Amount,
                     Date = DateTime.Now,
                     Description = transaction.Description
                 };
-                if(transaction.TType == TransactionTypes.Credit)
+                if (receiverAccount != null)
                 {
-                    findAccID.Balance = findAccID.Balance + transaction.Amount;
+                    receiverAccount.Balance = receiverAccount.Balance + transaction.Amount;
+                    var receiversTransaction = new Transaction()
+                    {
+                        AccountID = receiverAccount.Id,
+                        TType = TransactionTypes.Debit,
+                        Amount = transaction.Amount,
+                        Date = DateTime.Now,
+                        Description = $"You received {transaction.Amount} from Account ID {transaction.AccountID} with message {transaction.Description.Substring((transaction.Description.IndexOf("with the message '") + "with the message '".Length), (transaction.Description.LastIndexOf("'")) - (transaction.Description.IndexOf("with the message '") + "with the message '".Length))}"
+                    };
+                    await _ppbDBContext.Transactions.AddAsync(receiversTransaction);
                 }
                 if(transaction.TType == TransactionTypes.Debit)
                 {
@@ -53,7 +65,7 @@ namespace PPB.Infrastructure.Repository
                     else
                         throw new InsufficientBalanceException($"You don't have enough balance to send money");
                 }
-                await _ppbDBContext.Transactions.AddAsync(newTransaction);
+                await _ppbDBContext.Transactions.AddAsync(sendersTransaction);
                 await _ppbDBContext.SaveChangesAsync();
                 return transaction;
             }

@@ -30,7 +30,7 @@ namespace PPB.API.Controllers
         }
         
         [HttpGet("{accID}")]
-        public async Task<IActionResult> GetTransactionsByAccIDAsync(int accID)
+        public async Task<IActionResult> GetTransactionsByUserIDAsync(int accID)
         {
             var allTransactionsByAID = await _mediator.Send(new GetTransactionsByAccIDQuery(accID));
             return Ok(allTransactionsByAID);

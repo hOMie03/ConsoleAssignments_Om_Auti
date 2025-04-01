@@ -1,0 +1,81 @@
+<div id="wrapper">
+    <nav class="navbar navbar-light bg-faded">
+        <div class="sidebar" role="navigation">
+            <ul class="nav flex-column" id="side-menu">
+              <li class="nav-item">
+                <a routerLink="/user/homeboard"><i class="fas fa-columns"></i> Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="active" routerLink="/user/account/transactionHistory"><i class="fas fa-history"></i> Transaction History</a>
+              </li>
+    
+              <li class="nav-item" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  <a href="#"><i class="fas fa-file-invoice"></i> &nbsp; <i class="fas fa-chevron-right"></i> Accounts </a>
+              </li>
+              <ul class="collapse nav-second-level" id="collapseExample">
+                  <li class="nav-item">
+                    <a routerLink="/user/account/addAccount">Add New Account</a>
+                  </li>
+                  <li class="nav-item">
+                    <a routerLink="/user/account/yourAccounts">Your Accounts (Accounts' Balance)</a>
+                  </li>
+              </ul>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <div class="accounts-container mt-4  justify-content-center">
+      <h1>Your Transaction History of</h1><br>
+      <p>Select your account to display transactions of respective account</p>
+      <select class="form-control" aria-describedby="basic-addon2" [(ngModel)]="transactions.accountID" (click)="getUserTransactions()">
+        <option value="0" disabled>--Select--</option>
+        @for (account of accounts;track account){
+            @if(account.accountType==1){
+                <option value="{{account.id}}">Savings Account</option>
+            }
+            @if(account.accountType==2){
+                <option value="{{account.id}}">Current Account</option>
+            }
+            @if(account.accountType==3){
+                <option value="{{account.id}}">Salary Account</option>
+            }
+        }
+      </select>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              
+              <!-- <th scope="col">UserID</th> -->
+              <th scope="col">Transaction ID</th>
+              <th scope="col">Account ID</th>
+              <th scope="col">Transaction Type</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Date Of Transaction</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (transaction of dispTransactions;track transaction){
+                <tr>
+                  <!-- <td>{{account.userID}}</td> -->
+                  <td>{{transaction.id}}</td>
+                  <td>{{transaction.accountID}}</td>
+                  @if(transaction.tType==1)
+                  {
+                    <td>Credit</td>
+                  }
+                  @if(transaction.tType==2)
+                  {
+                    <td>Debit</td>
+                  }
+                  <td>{{transaction.amount}}</td>
+                  <td>{{transaction.date}}</td>
+                  <td>{{transaction.description}}</td>
+                  
+                </tr>
+          }
+          </tbody>
+          
+        </table>
+    </div> 
+  </div>

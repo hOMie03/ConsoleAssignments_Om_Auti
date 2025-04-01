@@ -18,7 +18,7 @@
               <a href="#" class="active"><i class="fas fa-columns"></i> Dashboard</a>
             </li>
             <li class="nav-item">
-              <a href="#"><i class="fas fa-history"></i> Transaction History</a>
+              <a routerLink="/user/account/transactionHistory"><i class="fas fa-history"></i> Transaction History</a>
             </li>
   
             <li class="nav-item" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -56,9 +56,17 @@
           <br>
           <h6 class="card-text">Here, you can do transaction seamlessly and digitally!</h6>
           <br>
-          <button class="btn btn-success"><a href="#" class="card-link">Check your account balance <i class="fas fa-balance-scale-right"></i></a></button>
-          &nbsp;&nbsp;
-          <button class="btn btn-outline-success"><a href="#" class="card-link"><i class="fas fa-donate"></i> Send Money</a></button>
+          <button class="btn btn-success"><a routerLink="/user/account/yourAccounts" class="card-link">Check your account balance <i class="fas fa-balance-scale-right"></i></a></button>
+          <br><br>
+          <div class="dropdown">
+            <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-donate"></i> Send Money
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="/user/sendMoney">To Another PPB Account</a></li>
+              <li><a class="dropdown-item" routerLink="/user/sendMoney">To Other</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

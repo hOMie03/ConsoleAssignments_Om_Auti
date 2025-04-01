@@ -12,6 +12,8 @@ import { CalendarComponent } from './components/admin/calendar/calendar.componen
 import { LogoutComponent } from './components/auth/logout/logout.component';
 import { AddNewAccountComponent } from './components/user/add-new-account/add-new-account.component';
 import { YourAccountsComponent } from './components/user/your-accounts/your-accounts.component';
+import { TransactionHistoryComponent } from './components/user/transaction-history/transaction-history.component';
+import { SendMoneyComponent } from './components/user/send-money/send-money.component';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +22,7 @@ import { YourAccountsComponent } from './components/user/your-accounts/your-acco
             HomeComponent, LoginComponent, RegisterComponent, LogoutComponent,
             AHeaderComponent, DashboardComponent, CalendarComponent,
             HomeboardComponent,
-            AddNewAccountComponent, YourAccountsComponent],
+            AddNewAccountComponent, YourAccountsComponent, TransactionHistoryComponent, SendMoneyComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DisplayAccount } from '../../../models/user/account';
 import { AccountService } from '../../../services/user/account.service';
 import { RouterModule } from '@angular/router';
+import { RouterService } from '../../../services/router.service';
 
 @Component({
   selector: 'app-your-accounts',
@@ -13,7 +14,7 @@ import { RouterModule } from '@angular/router';
 export class YourAccountsComponent {
   accounts?:DisplayAccount[]=[];
   // newProduct: Product = new Product();
-  constructor(private accountService:AccountService)//before angular 18th 
+  constructor(private accountService:AccountService, private routerService:RouterService)//before angular 18th 
   {
     console.log("this is account component constructor");
   }
@@ -30,7 +31,12 @@ export class YourAccountsComponent {
       }
     )
   }
-  // updateAccount(account:Account) {
-  //   console.log(account);
-  // }
+  deleteAccount(accountNumber?:string) {
+    console.log(accountNumber);
+    this.accountService.deleteAccount(this.userID, accountNumber).subscribe(res=>{
+      console.log(res);
+      alert("Your account has been deleted successfully!");
+      this.routerService.goToUserDashboard();
+    })
+  }
 }

@@ -15,7 +15,7 @@ namespace PPB.Application.Interfaces
         Task<IEnumerable<Account>> GetAccountsByUserID(string userID);
 
         Task<AddAccountDTO> AddAccountAsync(AddAccountDTO newAccount);
-        Task<bool> DeleteAccountAsync(string userID, int accID);
+        Task<bool> DeleteAccountAsync(string userID, int accNo);
         Task<UpdateAccountDTO> UpdateAccountAsync(int id, UpdateAccountDTO account);
     }
 }

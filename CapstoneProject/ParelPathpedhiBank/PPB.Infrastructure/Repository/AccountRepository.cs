@@ -43,9 +43,9 @@ namespace PPB.Infrastructure.Repository
             await _ppbDBContext.SaveChangesAsync();
             return newAccount;
         }
-        public async Task<bool> DeleteAccountAsync(string userID, int accID)
+        public async Task<bool> DeleteAccountAsync(string userID, int accNo)
         {
-            var foundAcc = await _ppbDBContext.Accounts.FirstOrDefaultAsync(a => a.UserID == userID && a.Id == accID);
+            var foundAcc = await _ppbDBContext.Accounts.FirstOrDefaultAsync(a => a.UserID == userID && a.AccountNumber == accNo);
             if (foundAcc is not null)
             {
                 _ppbDBContext.Accounts.Remove(foundAcc);

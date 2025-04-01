@@ -11,6 +11,8 @@ import { AddNewAccountComponent } from './components/user/add-new-account/add-ne
 import { YourAccountsComponent } from './components/user/your-accounts/your-accounts.component';
 import { authGuard } from './auth.guard';
 import { adminGuardGuard } from './admin-guard.guard';
+import { TransactionHistoryComponent } from './components/user/transaction-history/transaction-history.component';
+import { SendMoneyComponent } from './components/user/send-money/send-money.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -21,5 +23,7 @@ export const routes: Routes = [
     {path: 'admin/dashboard/calendar', component: CalendarComponent, canActivate:[adminGuardGuard]},
     {path: 'user/homeboard', component: HomeboardComponent, canActivate:[authGuard]},
     {path: 'user/account/addAccount', component: AddNewAccountComponent, canActivate:[authGuard]},
-    {path: 'user/account/yourAccounts', component: YourAccountsComponent, canActivate:[authGuard]}
+    {path: 'user/account/yourAccounts', component: YourAccountsComponent, canActivate:[authGuard]},
+    {path: 'user/account/transactionHistory', component: TransactionHistoryComponent, canActivate:[authGuard]},
+    {path: 'user/sendMoney', component: SendMoneyComponent, canActivate:[authGuard]}
 ];
