@@ -5,6 +5,7 @@ import { Register } from '../../../models/auth/register';
 import { Router } from '@angular/router';
 import { response } from 'express';
 import { CommonModule } from '@angular/common';
+import { RouterService } from '../../../services/router.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   errorMsg = '';
 
-  constructor(private userService:UserService, private fb:FormBuilder, private router: Router) {
+  constructor(private userService:UserService, private fb:FormBuilder, private routerService: RouterService) {
 
   }
   ngOnInit() {
@@ -33,7 +34,7 @@ export class RegisterComponent implements OnInit {
         console.log(response);
         alert("Registration Success");
         // this.registerForm?.reset();
-        this.router.navigate(['/auth/login']);
+        this.routerService.goToLogin();
 
       },
       error: (err) => {

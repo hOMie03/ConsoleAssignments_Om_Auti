@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using System.IdentityModel.Tokens.Jwt;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -39,8 +40,15 @@ namespace PPB.API.Controllers
         [HttpPost("AddAccount")]
         public async Task<IActionResult> AddAccountAsync(AddAccountDTO newAccount)
         {
-            var newAcc = await _mediator.Send(new AddAccountCommand(newAccount));
-            return Ok(newAcc);
+            string header = HttpContext.Request.Headers["Authorization"].ToString();
+            //if(header.StartsWith("Bearer "))
+            //{
+            //    var token = header.Substring(7).Trim();
+            //    newAccount.UserID = new JwtSecurityTokenHandler().ReadJwtToken(token).Claims.FirstOrDefault(c => c.Type == "UID")?.Value;
+                var newAcc = await _mediator.Send(new AddAccountCommand(newAccount));
+                return Ok(newAcc);
+            //}
+            //return BadRequest();
         }
         [HttpPost("DeleteAccount")]
         public async Task<IActionResult> DeleteAccountAsync(string userID, int accID)

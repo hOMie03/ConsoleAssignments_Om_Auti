@@ -11,6 +11,7 @@ import { HomeboardComponent } from './components/user/homeboard/homeboard.compon
 import { CalendarComponent } from './components/admin/calendar/calendar.component';
 import { LogoutComponent } from './components/auth/logout/logout.component';
 import { AddNewAccountComponent } from './components/user/add-new-account/add-new-account.component';
+import { YourAccountsComponent } from './components/user/your-accounts/your-accounts.component';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,7 @@ import { AddNewAccountComponent } from './components/user/add-new-account/add-ne
             HomeComponent, LoginComponent, RegisterComponent, LogoutComponent,
             AHeaderComponent, DashboardComponent, CalendarComponent,
             HomeboardComponent,
-            AddNewAccountComponent],
+            AddNewAccountComponent, YourAccountsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

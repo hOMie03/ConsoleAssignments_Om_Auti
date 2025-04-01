@@ -11,8 +11,8 @@ export class AccountService {
 
   constructor() { }
 
-  getAllAccounts():Observable<Account[]>{
-    return this.http.get<Account[]>('https://localhost:7011/api/Account')
+  getAllAccounts(userID:string):Observable<Account[]>{
+    return this.http.get<Account[]>(`https://localhost:7011/api/Account/${userID}`);
   }
   addAccount(account: Account): Observable<Account> {
     return this.http.post<Account>('https://localhost:7011/api/Account/AddAccount', account);

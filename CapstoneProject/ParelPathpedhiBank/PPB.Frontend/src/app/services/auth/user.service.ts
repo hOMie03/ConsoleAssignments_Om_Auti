@@ -19,4 +19,15 @@ export class UserService {
   register(user:Register):Observable<RegistrationResponseModel> {
     return this.http.post<RegistrationResponseModel>(`${this.apiUrl}/register`,user);
   }
+
+  isLoggedIn():boolean{
+    return !!localStorage.getItem('token');
+  }
+  checkAdmin():boolean {
+    if(localStorage.getItem('email') == "om@admin.com")
+    {
+      return true;
+    }
+    return false;
+  }
 }

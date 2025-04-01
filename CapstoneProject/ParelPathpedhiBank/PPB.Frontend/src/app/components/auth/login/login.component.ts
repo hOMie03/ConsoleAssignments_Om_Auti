@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { UserService } from '../../../services/auth/user.service';
 import { AuthResponseModel, Login } from '../../../models/auth/login';
 import { Router } from '@angular/router';
+import { RouterService } from '../../../services/router.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginModel:Login=new Login('','');
   errorMsg='';
-  constructor(private userService:UserService, private router: Router){}
+  constructor(private userService:UserService, private routerService: RouterService){}
   ngonInit(){
     // this.loginUser();
   }
@@ -27,7 +28,11 @@ export class LoginComponent {
     this.userService.login(this.loginModel).subscribe({
       next:(response:AuthResponseModel)=>{
         console.log('Login Success',response);
+
         localStorage.setItem('token',response.token);
+        localStorage.setItem('userID',response.id);
+        localStorage.setItem('email',response.email);
+        
         alert('LoginSuccess');
         sessionStorage.setItem('userID', response.id);
         console.log("Session created", sessionStorage.getItem('userID'));
@@ -35,11 +40,11 @@ export class LoginComponent {
         
         if(this.loginModel.email == "om@admin.com")
         {
-          this.router.navigate(['/admin/dashboard']);
+          this.routerService.goToAdminDashboard();
         }
         else
         {
-          this.router.navigate(['/user/homeboard']);
+          this.routerService.goToUserboard();
         }
       }, error:(error)=>{
         console.error('LoginFailed',error);

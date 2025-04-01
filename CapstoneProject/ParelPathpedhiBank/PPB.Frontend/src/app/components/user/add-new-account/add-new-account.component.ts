@@ -18,25 +18,19 @@ export class AddNewAccountComponent implements OnInit {
   d:Date = new Date();
   constructor(private accountService:AccountService)//before angular 18th 
   {
+    this.newAccount.userID = String(localStorage.getItem('userID'));
     console.log("this is addnewaccount component constructor");
   }
   ngOnInit():void{
     console.log("this is ngoninit method");
-    // this.getAllSccounts();
     this.addAccount();
   }
-  // getAllAccounts():void {
-  //   this.accountService.getAllAccounts().subscribe(res=>{
-  //     console.log(res);
-  //     this.accounts=res;
-  //     }
-  //   )
-  // }
   addAccount():void{
+    this.newAccount.accountType = parseInt(this.newAccount.accountType as unknown as string, 10);
     this.accountService.addAccount(this.newAccount).subscribe(res=>{
       console.log("Successful adding in DB", res);
       this.accounts?.push(res);
+      console.log(res.accountType);
     })
   }
-  
 }

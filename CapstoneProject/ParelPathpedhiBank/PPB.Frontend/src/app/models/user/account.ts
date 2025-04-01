@@ -4,3 +4,10 @@ export class Account {
     accountType?:number;
     createdDate?:Date;
 }
+export class DisplayAccount {
+    userID?:string;
+    accountNumber?:string;
+    balance?:number;
+    accountType?:number;
+    createdDate?:Date;
+}

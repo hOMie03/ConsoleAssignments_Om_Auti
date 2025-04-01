@@ -5,9 +5,11 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using PPB.Application.Exceptions;
 using PPB.Application.Interfaces;
 using PPB.Application.Models;
 using PPB.Domain.Models;
+using PPB.Domain.Models.Constants;
 using PPB.Infrastructure.Context;
 
 namespace PPB.Infrastructure.Repository
@@ -29,17 +31,36 @@ namespace PPB.Infrastructure.Repository
         }
         public async Task<TransactionDTO> AddTransactionAsync(TransactionDTO transaction)
         {
-            var newTransaction = new Transaction()
+            var findAccID = await _ppbDBContext.Accounts.FirstOrDefaultAsync(a => a.Id == transaction.AccountID);
+            if(findAccID != null)
             {
-                AccountID = transaction.AccountID,
-                TType = transaction.TType,
-                Amount = transaction.Amount,
-                Date = DateTime.Now,
-                Description = transaction.Description
-            };
-            await _ppbDBContext.Transactions.AddAsync(newTransaction);
-            await _ppbDBContext.SaveChangesAsync();
-            return transaction;
+                var newTransaction = new Transaction()
+                {
+                    AccountID = transaction.AccountID,
+                    TType = transaction.TType,
+                    Amount = transaction.Amount,
+                    Date = DateTime.Now,
+                    Description = transaction.Description
+                };
+                if(transaction.TType == TransactionTypes.Credit)
+                {
+                    findAccID.Balance = findAccID.Balance + transaction.Amount;
+                }
+                if(transaction.TType == TransactionTypes.Debit)
+                {
+                    if (findAccID.Balance > transaction.Amount)
+                        findAccID.Balance = findAccID.Balance - transaction.Amount;
+                    else
+                        throw new InsufficientBalanceException($"You don't have enough balance to send money");
+                }
+                await _ppbDBContext.Transactions.AddAsync(newTransaction);
+                await _ppbDBContext.SaveChangesAsync();
+                return transaction;
+            }
+            else
+            {
+                throw new AccountNotFoundException($"Account with ID {transaction.AccountID} not found.");
+            }
         }
     }
 }

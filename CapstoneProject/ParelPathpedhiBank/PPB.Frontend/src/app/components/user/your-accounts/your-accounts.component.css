@@ -1,7 +1,11 @@
 
 #wrapper {
+    height: 500px;
     width: 100%;
   }
+.accounts-container {
+    margin: 20%;
+}
   
   #content {
     min-height: 385px;
