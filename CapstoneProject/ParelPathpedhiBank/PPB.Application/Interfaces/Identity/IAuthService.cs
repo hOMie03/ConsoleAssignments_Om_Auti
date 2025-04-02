@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PPB.Application.Models.Identity;
+using PPB.Domain.Models;
 
 namespace PPB.Application.Interfaces.Identity
 {
@@ -11,6 +12,6 @@ namespace PPB.Application.Interfaces.Identity
     {
         Task<AuthResponse> Login(AuthRequest authRequest);
         Task<RegistrationResponse> Register(RegistrationRequest registrationRequest);
-        //Task Logout(string token);
+        Task<IEnumerable<User>> GetAllUsers();
     }
 }

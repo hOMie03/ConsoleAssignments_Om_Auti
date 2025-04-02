@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using PPB.Application.Exceptions;
@@ -99,6 +100,9 @@ namespace PPB.Identity.Service
             return jwtSecurityToken;
         }
 
-        //public async Task Logout(string token) { }
+        public async Task<IEnumerable<User>> GetAllUsers()
+        {
+            return await _userManager.Users.ToListAsync();
+        }
     }
 }

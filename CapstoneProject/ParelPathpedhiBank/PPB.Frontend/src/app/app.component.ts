@@ -14,6 +14,9 @@ import { AddNewAccountComponent } from './components/user/add-new-account/add-ne
 import { YourAccountsComponent } from './components/user/your-accounts/your-accounts.component';
 import { TransactionHistoryComponent } from './components/user/transaction-history/transaction-history.component';
 import { SendMoneyComponent } from './components/user/send-money/send-money.component';
+import { AccountsComponent } from './components/admin/getAll/accounts/accounts.component';
+import { TransactionsComponent } from './components/admin/getAll/transactions/transactions.component';
+import { UsersComponent } from './components/admin/getAll/users/users.component';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +24,7 @@ import { SendMoneyComponent } from './components/user/send-money/send-money.comp
   imports: [RouterOutlet, HeaderComponent, FooterComponent,
             HomeComponent, LoginComponent, RegisterComponent, LogoutComponent,
             AHeaderComponent, DashboardComponent, CalendarComponent,
+            AccountsComponent, TransactionsComponent, UsersComponent,
             HomeboardComponent,
             AddNewAccountComponent, YourAccountsComponent, TransactionHistoryComponent, SendMoneyComponent],
   templateUrl: './app.component.html',

@@ -9,5 +9,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './homeboard.component.css'
 })
 export class HomeboardComponent {
-
+  email?:string | null = localStorage.getItem('email');
 }

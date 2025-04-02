@@ -28,7 +28,10 @@ export class LoginComponent {
     this.userService.login(this.loginModel).subscribe({
       next:(response:AuthResponseModel)=>{
         console.log('Login Success',response);
-
+        if(response == null) {
+          alert("Incorrect Email or Password! Please try again");
+          loginForm.reset();
+        }
         localStorage.setItem('token',response.token);
         localStorage.setItem('userID',response.id);
         localStorage.setItem('email',response.email);
@@ -48,7 +51,7 @@ export class LoginComponent {
         }
       }, error:(error)=>{
         console.error('LoginFailed',error);
-        this.errorMsg=JSON.stringify(error.error);
+        this.errorMsg=JSON.stringify(error.error.message);
         alert(this.errorMsg);
       }
     });

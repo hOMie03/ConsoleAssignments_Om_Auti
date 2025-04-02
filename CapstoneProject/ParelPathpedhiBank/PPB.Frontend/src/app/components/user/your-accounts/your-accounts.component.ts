@@ -20,8 +20,7 @@ export class YourAccountsComponent {
   }
   ngOnInit():void{
     console.log("this is ngOnInit method");
-    this.getAllProducts();
-      
+    this.getAllProducts(); 
   }
   userID:string = String(localStorage.getItem('userID'));
   getAllProducts():void {
