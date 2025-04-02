@@ -19,7 +19,7 @@ export class LogoutComponent implements OnInit {
       sessionStorage.removeItem('userID');
       this.userService.updateLoginStatus(false);
       console.log("Logout done. Session now: ", sessionStorage.getItem('userID'));
-      this.routerService.goToLogin();
+      // this.routerService.goToLogin();
     }
   }
 }

@@ -51,7 +51,7 @@ namespace PPB.Infrastructure.Repository
                     var receiversTransaction = new Transaction()
                     {
                         AccountID = receiverAccount.Id,
-                        TType = TransactionTypes.Debit,
+                        TType = TransactionTypes.Credit,
                         Amount = transaction.Amount,
                         Date = DateTime.Now,
                         Description = $"You received {transaction.Amount} from Account ID {transaction.AccountID} with message {transaction.Description.Substring((transaction.Description.IndexOf("with the message '") + "with the message '".Length), (transaction.Description.LastIndexOf("'")) - (transaction.Description.IndexOf("with the message '") + "with the message '".Length))}"

@@ -20,7 +20,7 @@
           &nbsp;
         </ul>
         <ul class="navbar-nav login-nav">
-          @if(!isLoggedIn) {
+          @if(userID == null) {
             <li class="nav-item">
               <button id="auth-btn" class="btn btn-lg rounded-pill text-white bg-green-cyan font-weight-bold" routerLink="/auth/login">Login</button>
             </li>
@@ -29,7 +29,7 @@
               <button id="auth-btn" type="button" class="btn btn-lg rounded-pill text-white bg-green-cyan font-weight-bold" routerLink="/auth/register">Register</button>
             </li>
           }
-          @if(isLoggedIn) {
+          @if(userID != null) {
             <li class="nav-item">
               <button id="auth-btn" type="button" class="btn btn-lg rounded-pill text-white bg-green-cyan font-weight-bold" routerLink="/auth/logout">Logout</button>
             </li>
@@ -39,7 +39,7 @@
             </li>
             &nbsp;
             <li class="nav-item">
-              <button id="auth-btn" type="button" class="btn btn-lg rounded-pill text-white bg-green-cyan font-weight-bold" routerLink="/user/homeboard">{{email}}</button>
+              <button id="auth-btn" type="button" class="btn btn-lg rounded-pill text-white bg-green-cyan font-weight-bold" routerLink="/user/homeboard">User</button>
             </li>
           }
         </ul>

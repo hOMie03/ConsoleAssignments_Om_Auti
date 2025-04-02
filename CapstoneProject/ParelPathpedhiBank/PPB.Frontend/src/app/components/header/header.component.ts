@@ -12,20 +12,20 @@ import { UserService } from '../../services/auth/user.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
-  // userID: string | null = null;
-  isLoggedIn:boolean = true;
-  email:string | null = '';
+  userID: string | null = null;
+  // isLoggedIn:boolean = true;
+  // email:string | null = '';
 
   constructor(private userService:UserService) {}
 
   ngOnInit(): void {
     // Fetch the userID from sessionStorage
-    // if (typeof window !== 'undefined' && window.sessionStorage) {
-    //   this.userID = sessionStorage.getItem('userID');
-    // }
-    this.userService.isLoggedIn$.subscribe((loggedIn) => {
-      this.isLoggedIn = loggedIn;
-      this.email = localStorage.getItem('email');
-    })
+    if (typeof window !== 'undefined' && window.sessionStorage) {
+      this.userID = sessionStorage.getItem('userID');
+    }
+    // this.userService.isLoggedIn$.subscribe((loggedIn) => {
+    //   this.isLoggedIn = loggedIn;
+    //   this.email = localStorage.getItem('email');
+    // })
   }
 }
