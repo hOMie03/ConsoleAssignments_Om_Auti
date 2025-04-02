@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthResponseModel, Login } from '../../models/auth/login';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Register, RegistrationResponseModel } from '../../models/auth/register';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private loggedIn = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.loggedIn.asObservable();
   private apiUrl="https://localhost:7011/api/Auth";
   
   constructor(private http:HttpClient) { }
@@ -23,6 +25,11 @@ export class UserService {
   isLoggedIn():boolean{
     return !!localStorage.getItem('token');
   }
+
+  updateLoginStatus(isLoggedIn:boolean) {
+    this.loggedIn.next(isLoggedIn);
+  }
+
   checkAdmin():boolean {
     if(localStorage.getItem('email') == "om@admin.com")
     {

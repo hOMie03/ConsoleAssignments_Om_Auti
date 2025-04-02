@@ -32,7 +32,7 @@ export class LoginComponent {
         localStorage.setItem('token',response.token);
         localStorage.setItem('userID',response.id);
         localStorage.setItem('email',response.email);
-        
+        this.userService.updateLoginStatus(true);
         alert('LoginSuccess');
         sessionStorage.setItem('userID', response.id);
         console.log("Session created", sessionStorage.getItem('userID'));
