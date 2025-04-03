@@ -47,11 +47,11 @@
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon2">Amount to Transfer</span>
-          <input type="number" [(ngModel)]="newTransaction.amount" placeholder="Enter Initial Balance" class="form-control" aria-describedby="basic-addon2" />
+          <input type="number" [(ngModel)]="newTransaction.amount" placeholder="Enter Amount" class="form-control" aria-describedby="basic-addon2" />
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon2">Today's Date</span>
-          <input type="text" [(ngModel)]="newTransaction.date" placeholder="Enter Initial Balance" class="form-control" aria-describedby="basic-addon2" />
+          <input type="text" [(ngModel)]="newTransaction.date" placeholder="Today's Date" class="form-control" aria-describedby="basic-addon2" disabled />
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon2">To Account Number</span>
@@ -61,6 +61,6 @@
         <span class="input-group-text" id="basic-addon2">Description</span>
           <input type="text" [(ngModel)]="newTransaction.description" placeholder="Enter Initial Balance" class="form-control" aria-describedby="basic-addon2" />
       </div>
-      <button class="btn btn-primary" (click)="doTransaction()">Send {{newTransaction.amount}} Money</button>
+      <button class="btn btn-primary" (click)="doTransaction()">Send ₹{{newTransaction.amount}} Money</button>
     </div> 
   </div>
