@@ -39,7 +39,13 @@ export class RegisterComponent implements OnInit {
       },
       error: (err) => {
         console.error('Registration Failed:', err);
-        this.errorMsg = JSON.stringify(err.error.message);
+        if(err.error.errors != null)
+        {
+          this.errorMsg = JSON.stringify(err.error.errors.Password);
+        }
+        else {
+          this.errorMsg = JSON.stringify(err.error.message);
+        }
         alert(this.errorMsg);
       }
     });
