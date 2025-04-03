@@ -18,6 +18,10 @@ export class RouterService {
     this.router.navigate(['/admin/dashboard']);
   }
 
+  displaySuccess() {
+    this.router.navigate(['/auth/successful']);
+  }
+
   // After deleting
   goToUserDashboard() {
     this.router.navigate(['/user/homeboard']);

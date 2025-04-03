@@ -17,12 +17,13 @@ import { SendMoneyComponent } from './components/user/send-money/send-money.comp
 import { AccountsComponent } from './components/admin/getAll/accounts/accounts.component';
 import { TransactionsComponent } from './components/admin/getAll/transactions/transactions.component';
 import { UsersComponent } from './components/admin/getAll/users/users.component';
+import { SuccessfulLoginComponent } from './components/auth/successful-login/successful-login.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent,
-            HomeComponent, LoginComponent, RegisterComponent, LogoutComponent,
+            HomeComponent, LoginComponent, RegisterComponent, LogoutComponent, SuccessfulLoginComponent,
             AHeaderComponent, DashboardComponent, CalendarComponent,
             AccountsComponent, TransactionsComponent, UsersComponent,
             HomeboardComponent,

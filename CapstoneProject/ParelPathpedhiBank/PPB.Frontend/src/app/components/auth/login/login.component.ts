@@ -36,19 +36,19 @@ export class LoginComponent {
         localStorage.setItem('userID',response.id);
         localStorage.setItem('email',response.email);
         this.userService.updateLoginStatus(true);
-        alert('LoginSuccess');
+        // alert('LoginSuccess');
         sessionStorage.setItem('userID', response.id);
         console.log("Session created", sessionStorage.getItem('userID'));
         // loginForm.reset();
-        
-        if(this.loginModel.email == "om@admin.com")
-        {
-          this.routerService.goToAdminDashboard();
-        }
-        else
-        {
-          this.routerService.goToUserboard();
-        }
+        this.routerService.displaySuccess();
+        // if(this.loginModel.email == "om@admin.com")
+        // {
+        //   this.routerService.goToAdminDashboard();
+        // }
+        // else
+        // {
+        //   this.routerService.goToUserboard();
+        // }
       }, error:(error)=>{
         console.error('LoginFailed',error);
         this.errorMsg=JSON.stringify(error.error.message);

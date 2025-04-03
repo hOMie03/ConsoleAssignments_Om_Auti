@@ -1,0 +1,13 @@
+<p class="text-center">
+    Logged in Successfully!
+    @if(adminCheck == "om@admin.com") {
+        <a href="/admin/dashboard" style="text-decoration: underline; color: blue;">
+            Please click here to go to your dashboard.
+        </a>
+    }
+    @else {
+        <a href="/user/homeboard" style="text-decoration: underline; color: blue;">
+            Please click here to go to your dashboard.
+        </a>
+    }
+</p>

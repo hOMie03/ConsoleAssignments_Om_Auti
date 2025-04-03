@@ -16,10 +16,12 @@ import { SendMoneyComponent } from './components/user/send-money/send-money.comp
 import { AccountsComponent } from './components/admin/getAll/accounts/accounts.component';
 import { TransactionsComponent } from './components/admin/getAll/transactions/transactions.component';
 import { UsersComponent } from './components/admin/getAll/users/users.component';
+import { SuccessfulLoginComponent } from './components/auth/successful-login/successful-login.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'auth/login', component: LoginComponent},
+    {path: 'auth/successful', component: SuccessfulLoginComponent, canActivate:[authGuard]},
     {path: 'auth/register', component: RegisterComponent},
     {path: 'auth/logout', component: LogoutComponent},
     {path: 'admin', component: AHeaderComponent, canActivate:[adminGuardGuard]},
