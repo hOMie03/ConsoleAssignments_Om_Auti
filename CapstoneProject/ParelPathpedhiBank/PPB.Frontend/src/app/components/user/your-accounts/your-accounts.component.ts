@@ -30,12 +30,12 @@ export class YourAccountsComponent {
       }
     )
   }
-  deleteAccount(accountNumber?:string) {
-    console.log(accountNumber);
-    this.accountService.deleteAccount(this.userID, accountNumber).subscribe(res=>{
-      console.log(res);
-      alert("Your account has been deleted successfully!");
-      this.routerService.goToUserDashboard();
-    })
-  }
+  // deleteAccount(accountNumber?:string) {
+  //   console.log(accountNumber);
+  //   this.accountService.deleteAccount(this.userID, accountNumber).subscribe(res=>{
+  //     console.log(res);
+  //     alert("Your account has been deleted successfully!");
+  //     this.routerService.goToUserDashboard();
+  //   })
+  // }
 }

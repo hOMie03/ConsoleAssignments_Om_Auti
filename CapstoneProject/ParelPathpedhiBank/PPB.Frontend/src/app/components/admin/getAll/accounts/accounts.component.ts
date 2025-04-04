@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DisplayAccount } from '../../../../models/user/account';
 import { AdminService } from '../../../../services/admin/admin.service';
 import { RouterModule } from '@angular/router';
+import { AccountService } from '../../../../services/user/account.service';
 
 @Component({
   selector: 'app-accounts',
@@ -12,7 +13,7 @@ import { RouterModule } from '@angular/router';
 })
 export class AccountsComponent {
   accounts?:DisplayAccount[]=[];
-  constructor(private adminService:AdminService) { }
+  constructor(private adminService:AdminService, private accountService:AccountService) { }
   ngOnInit():void{
     console.log("this is ngOnInit method");
     this.getAllAccounts(); 
@@ -23,5 +24,15 @@ export class AccountsComponent {
       console.log(res);
       this.accounts = res;
     });
+  }
+  deleteAccount(uID?:string, accountNumber?:string) {
+    console.log(uID, accountNumber);
+    if(uID != null)
+    {
+      this.accountService.deleteAccount(uID, accountNumber).subscribe(res=>{
+        console.log(res);
+        alert(`Account ${accountNumber} has been deleted successfully!`);
+      })
+    }
   }
 }
